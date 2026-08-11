@@ -54,7 +54,8 @@
                             @click="selectBrand(brand.refBrandId, brand.name)">
                             <template v-slot:prepend>
                                 <v-avatar color="grey-lighten-3" size="32" class="mr-3">
-                                    <v-img v-if="brand.logoUrl" :src="'https://api.olaa.la/files/' + brand.logoUrl" />
+                                    <v-img v-if="brand.logoUrl" :src="'https://api.olaa.la/files/' + brand.logoUrl"
+                                        contain />
                                     <v-icon v-else size="18" color="primary">mdi-tag-outline</v-icon>
                                 </v-avatar>
                             </template>
