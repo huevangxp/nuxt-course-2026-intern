@@ -22,15 +22,8 @@
 
                     <!-- Search Brand Input -->
                     <div class="pa-3">
-                        <v-text-field
-                            v-model="brandSearch"
-                            placeholder="ຄົ້ນຫາແບຣນ..."
-                            density="compact"
-                            variant="outlined"
-                            prepend-inner-icon="mdi-magnify"
-                            hide-details
-                            clearable
-                        />
+                        <v-text-field v-model="brandSearch" placeholder="ຄົ້ນຫາແບຣນ..." density="compact"
+                            variant="outlined" prepend-inner-icon="mdi-magnify" hide-details clearable />
                     </div>
 
                     <v-divider />
@@ -43,13 +36,8 @@
                     <!-- Brand List -->
                     <v-list v-else density="comfortable" nav class="pa-2 overflow-y-auto" style="max-height: 550px;">
                         <!-- All Brands Option -->
-                        <v-list-item
-                            :active="selectedBrandId === 0"
-                            color="primary"
-                            variant="flat"
-                            class="mb-1"
-                            @click="selectBrand(0, 'ທັງໝົດ (All)')"
-                        >
+                        <v-list-item :active="selectedBrandId === 0" color="primary" variant="flat" class="mb-1"
+                            @click="selectBrand(0, 'ທັງໝົດ (All)')">
                             <template v-slot:prepend>
                                 <v-avatar color="primary" variant="tonal" size="32" class="mr-3">
                                     <v-icon size="18">mdi-apps</v-icon>
@@ -61,22 +49,12 @@
                         </v-list-item>
 
                         <!-- Dynamic Brand Items -->
-                        <v-list-item
-                            v-for="brand in filteredBrands"
-                            :key="brand.refBrandId"
-                            :active="selectedBrandId === brand.refBrandId"
-                            color="primary"
-                            variant="flat"
-                            class="mb-1"
-                            @click="selectBrand(brand.refBrandId, brand.name)"
-                        >
+                        <v-list-item v-for="brand in filteredBrands" :key="brand.refBrandId"
+                            :active="selectedBrandId === brand.refBrandId" color="primary" variant="flat" class="mb-1"
+                            @click="selectBrand(brand.refBrandId, brand.name)">
                             <template v-slot:prepend>
                                 <v-avatar color="grey-lighten-3" size="32" class="mr-3">
-                                    <v-img
-                                        v-if="brand.logoUrl"
-                                        :src="'https://api.olaa.la/files/' + brand.logoUrl"
-                                        contain
-                                    />
+                                    <v-img v-if="brand.logoUrl" :src="'https://api.olaa.la/files/' + brand.logoUrl" />
                                     <v-icon v-else size="18" color="primary">mdi-tag-outline</v-icon>
                                 </v-avatar>
                             </template>
@@ -103,14 +81,8 @@
                     </div>
 
                     <!-- Refresh Button -->
-                    <v-btn
-                        color="primary"
-                        variant="tonal"
-                        size="small"
-                        prepend-icon="mdi-refresh"
-                        class="text-none font-weight-bold"
-                        @click="loadProducts"
-                    >
+                    <v-btn color="primary" variant="tonal" size="small" prepend-icon="mdi-refresh"
+                        class="text-none font-weight-bold" @click="loadProducts">
                         ໂຫຼດໃໝ່
                     </v-btn>
                 </v-card>
@@ -128,39 +100,26 @@
                     <v-icon size="64" color="grey-lighten-1">mdi-package-variant-remove</v-icon>
                     <h3 class="text-h6 font-weight-bold mt-4">ບໍ່ພົບສິນຄ້າໃນແບຣນນີ້</h3>
                     <p class="text-body-2 text-medium-emphasis mb-4">ກະລຸນາເລືອກແບຣນອື່ນ ຫຼື ກັບຄືນໄປແບຣນທັງໝົດ</p>
-                    <v-btn color="primary" variant="flat" class="text-none font-weight-bold" @click="selectBrand(0, 'ທັງໝົດ (All)')">
+                    <v-btn color="primary" variant="flat" class="text-none font-weight-bold"
+                        @click="selectBrand(0, 'ທັງໝົດ (All)')">
                         ເບິ່ງແບຣນທັງໝົດ
                     </v-btn>
                 </v-card>
 
                 <!-- Products Grid -->
                 <v-row v-else>
-                    <v-col
-                        v-for="product in products"
-                        :key="product.productId"
-                        cols="12"
-                        sm="6"
-                        md="4"
-                    >
+                    <v-col v-for="product in products" :key="product.productId" cols="12" sm="6" md="4">
                         <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
-                            <div class="bg-grey-lighten-4 pa-4 text-center d-flex align-center justify-center position-relative" style="height: 180px;">
-                                <v-chip
-                                    v-if="product.dealsFlag"
-                                    color="warning"
-                                    size="x-small"
-                                    class="position-absolute font-weight-bold"
-                                    style="top: 8px; left: 8px;"
-                                >
+                            <div class="bg-grey-lighten-4 pa-4 text-center d-flex align-center justify-center position-relative"
+                                style="height: 180px;">
+                                <v-chip v-if="product.dealsFlag" color="warning" size="x-small"
+                                    class="position-absolute font-weight-bold" style="top: 8px; left: 8px;">
                                     {{ product.dealsFlag }}
                                 </v-chip>
 
-                                <v-img
-                                    v-if="product.productImageUrl"
-                                    :src="'https://api.olaa.la/files/' + product.productImageUrl"
-                                    aspect-ratio="1"
-                                    contain
-                                    max-height="150"
-                                />
+                                <v-img v-if="product.productImageUrl"
+                                    :src="'https://api.olaa.la/files/' + product.productImageUrl" aspect-ratio="1"
+                                    contain max-height="150" />
                                 <v-icon v-else size="64" color="grey-lighten-1">mdi-cellphone-off</v-icon>
                             </div>
 
@@ -181,12 +140,7 @@
                                         ₭{{ product.price ? product.price.toLocaleString() : '0' }}
                                     </span>
                                 </div>
-                                <v-btn
-                                    color="primary"
-                                    variant="flat"
-                                    size="small"
-                                    class="text-none font-weight-bold"
-                                >
+                                <v-btn color="primary" variant="flat" size="small" class="text-none font-weight-bold">
                                     ຊື້ດຽວນີ້
                                 </v-btn>
                             </v-card-actions>
@@ -216,7 +170,7 @@ const selectedBrandName = ref('ທັງໝົດ (All)')
 
 const filteredBrands = computed(() => {
     if (!brandSearch.value) return brands.value
-    return brands.value.filter(b => 
+    return brands.value.filter(b =>
         b.name.toLowerCase().includes(brandSearch.value.toLowerCase())
     )
 })
