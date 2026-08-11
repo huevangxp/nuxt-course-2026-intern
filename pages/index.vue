@@ -6,6 +6,19 @@
             <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover />
         </v-carousel>
 
+        <!-- Store Feature Highlights Bar (olaa.la style) -->
+        <v-row class="mb-6">
+            <v-col v-for="(highlight, hIdx) in highlights" :key="hIdx" cols="6" sm="3">
+                <v-card flat border class="pa-4 text-center fill-height d-flex flex-column align-center justify-center">
+                    <v-avatar :color="highlight.color" variant="tonal" size="44" class="mb-2">
+                        <v-icon size="24">{{ highlight.icon }}</v-icon>
+                    </v-avatar>
+                    <div class="text-subtitle-2 font-weight-bold">{{ highlight.title }}</div>
+                    <div class="text-caption text-medium-emphasis">{{ highlight.subtitle }}</div>
+                </v-card>
+            </v-col>
+        </v-row>
+
         <!-- Main Content: Left Filter + Right Product Grid -->
         <v-row>
             <!-- Left Sidebar: Categories & Brands Filter -->
