@@ -28,7 +28,8 @@
                 <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
                     <div class="bg-grey-lighten-4 pa-6 text-center d-flex align-center justify-center"
                         style="height: 140px;">
-                        <v-img :src="brand.logoUrl" aspect-ratio="1" cover width="100" height="100"></v-img>
+                        <v-img :src="'https://api.olaa.la/v1' + brand.logoUrl" aspect-ratio="1" cover width="100"
+                            height="100"></v-img>
                     </div>
                     <v-card-title class="font-weight-bold text-subtitle-1 px-4 pt-3 pb-1">
                         {{ brand.name }}
