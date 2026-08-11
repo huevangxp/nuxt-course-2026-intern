@@ -7,13 +7,13 @@
         <v-avatar color="primary" variant="tonal" size="40" class="mr-3">
           <v-icon size="24" color="primary">mdi-school-outline</v-icon>
         </v-avatar>
-        <span class="brand-title font-weight-bold">Edu<span class="text-primary">Course</span></span>
+        <span class="font-weight-bold text-h6">Edu<span class="text-primary">Course</span></span>
       </v-btn>
 
       <v-spacer />
 
       <!-- Desktop Navigation Links -->
-      <div class="d-none d-md-flex align-center gap-2">
+      <div class="d-none d-md-flex align-center ga-2">
         <v-btn 
           v-for="item in navItems" 
           :key="item.title" 
@@ -31,13 +31,13 @@
       <v-spacer />
 
       <!-- Right Action Items -->
-      <div class="d-none d-md-flex align-center gap-3">
+      <div class="d-none d-md-flex align-center ga-3">
         <v-btn
           to="/login"
           color="primary"
           variant="flat"
           rounded="pill"
-          class="text-none px-6 font-weight-bold shadow-sm"
+          class="text-none px-6 font-weight-bold"
           prepend-icon="mdi-account-circle-outline"
         >
           Login
@@ -93,9 +93,9 @@
 
     <!-- Main Content -->
     <v-main class="bg-grey-lighten-5">
-      <div class="main-content-wrapper">
+      <v-container class="py-6 px-4" fluid>
         <slot />
-      </div>
+      </v-container>
     </v-main>
 
     <!-- Footer -->
@@ -110,10 +110,10 @@
               </v-avatar>
               <span class="text-h5 font-weight-bold text-white">Edu<span class="text-primary">Course</span></span>
             </div>
-            <p class="text-body-2 text-grey-lighten-1 mb-6 line-height-relaxed">
+            <p class="text-body-2 text-grey-lighten-1 mb-6">
               Empowering learners worldwide with cutting-edge online courses, hands-on tutorials, and expert-led tech programs.
             </p>
-            <div class="d-flex gap-2">
+            <div class="d-flex ga-2">
               <v-btn
                 v-for="social in socialLinks"
                 :key="social.icon"
@@ -122,7 +122,6 @@
                 color="white"
                 size="small"
                 density="comfortable"
-                class="social-icon-btn"
                 :aria-label="social.name"
               />
             </div>
@@ -131,25 +130,36 @@
           <!-- Column 2: Quick Links -->
           <v-col cols="6" sm="4" md="2" class="mb-6 mb-md-0">
             <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">Quick Links</h4>
-            <ul class="footer-links list-unstyled">
-              <li v-for="item in navItems" :key="item.title" class="mb-2">
-                <NuxtLink :to="item.to" class="footer-link text-grey-lighten-1 text-decoration-none text-body-2">
-                  {{ item.title }}
-                </NuxtLink>
-              </li>
-            </ul>
+            <div class="d-flex flex-column ga-2">
+              <v-btn
+                v-for="item in navItems"
+                :key="item.title"
+                :to="item.to"
+                variant="plain"
+                density="compact"
+                color="grey-lighten-1"
+                class="justify-start px-0 text-capitalize text-body-2"
+              >
+                {{ item.title }}
+              </v-btn>
+            </div>
           </v-col>
 
           <!-- Column 3: Categories -->
           <v-col cols="6" sm="4" md="3" class="mb-6 mb-md-0">
             <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">Categories</h4>
-            <ul class="footer-links list-unstyled">
-              <li v-for="category in categories" :key="category" class="mb-2">
-                <a href="#" class="footer-link text-grey-lighten-1 text-decoration-none text-body-2">
-                  {{ category }}
-                </a>
-              </li>
-            </ul>
+            <div class="d-flex flex-column ga-2">
+              <v-btn
+                v-for="category in categories"
+                :key="category"
+                variant="plain"
+                density="compact"
+                color="grey-lighten-1"
+                class="justify-start px-0 text-capitalize text-body-2"
+              >
+                {{ category }}
+              </v-btn>
+            </div>
           </v-col>
 
           <!-- Column 4: Contact & Newsletter -->
@@ -176,12 +186,12 @@
         <v-divider class="my-8 border-opacity-25" color="grey-lighten-1" />
 
         <!-- Sub-footer copyright -->
-        <div class="d-flex flex-column flex-sm-row justify-space-between align-center text-caption text-grey-lighten-2">
+        <div class="d-flex flex-column flex-sm-row justify-space-between align-center text-caption text-grey-lighten-2 ga-2">
           <span>&copy; {{ currentYear }} EduCourse Inc. All rights reserved.</span>
-          <div class="d-flex gap-4 mt-2 mt-sm-0">
-            <a href="#" class="footer-link text-grey-lighten-2 text-decoration-none">Privacy Policy</a>
-            <a href="#" class="footer-link text-grey-lighten-2 text-decoration-none">Terms of Service</a>
-            <a href="#" class="footer-link text-grey-lighten-2 text-decoration-none">Cookie Settings</a>
+          <div class="d-flex ga-4 mt-2 mt-sm-0">
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">Privacy Policy</v-btn>
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">Terms of Service</v-btn>
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">Cookie Settings</v-btn>
           </div>
         </div>
       </v-container>
@@ -219,47 +229,3 @@ const socialLinks = [
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>
-
-<style scoped>
-.brand-title {
-  letter-spacing: -0.5px;
-}
-
-.main-content-wrapper {
-  min-height: calc(100vh - 68px - 320px);
-}
-
-.list-unstyled {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-link {
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-  color: #ffffff !important;
-}
-
-.social-icon-btn {
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.social-icon-btn:hover {
-  transform: translateY(-2px);
-}
-
-.gap-2 {
-  gap: 8px;
-}
-
-.gap-3 {
-  gap: 12px;
-}
-
-.gap-4 {
-  gap: 16px;
-}
-</style>
