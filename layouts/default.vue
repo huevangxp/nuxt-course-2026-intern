@@ -177,7 +177,7 @@
               </template>
             </v-text-field>
           </v-col>
-        </row>
+        </v-row>
 
         <v-divider class="my-8 border-opacity-25" color="grey-lighten-1" />
 
