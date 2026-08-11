@@ -26,7 +26,8 @@
         <v-row v-else>
             <v-col v-for="brand in brands" :key="brand.refBrandId" cols="12" sm="6" md="3" lg="3">
                 <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
-                    <div class="bg-grey-lighten-4 pa-6 text-center d-flex align-center justify-center" style="height: 140px;">
+                    <div class="bg-grey-lighten-4 pa-6 text-center d-flex align-center justify-center"
+                        style="height: 140px;">
                         <v-avatar color="primary" variant="tonal" size="64">
                             <v-icon size="36" color="primary">mdi-tag-outline</v-icon>
                         </v-avatar>
@@ -41,8 +42,7 @@
                         <span class="text-caption font-weight-bold text-success">
                             ✓ ເປີດໃຊ້ງານ
                         </span>
-                        <v-btn color="primary" variant="tonal" size="small"
-                            class="text-none font-weight-bold">
+                        <v-btn color="primary" variant="tonal" size="small" class="text-none font-weight-bold">
                             ເບິ່ງສິນຄ້າ
                         </v-btn>
                     </v-card-actions>
@@ -73,6 +73,7 @@ const loadBrands = async () => {
         loading.value = true
         const response = await axios.get('https://api.olaa.la/v1/api/purchasing/reference/brands/load-brand?skip=0&count=0&status=1')
         brands.value = response.data
+        console.log(response)
     } catch (error) {
         console.error('Error fetching brands:', error)
     } finally {
