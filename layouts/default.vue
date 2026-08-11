@@ -19,7 +19,6 @@
           :key="item.title" 
           :to="item.to" 
           variant="text" 
-          rounded="pill" 
           class="text-none font-weight-medium px-4"
           active-color="primary"
           :prepend-icon="item.icon"
@@ -36,7 +35,6 @@
           to="/login"
           color="primary"
           variant="flat"
-          rounded="pill"
           class="text-none px-6 font-weight-bold"
           prepend-icon="mdi-account-circle-outline"
         >
@@ -68,7 +66,6 @@
           :to="item.to"
           :title="item.title"
           :prepend-icon="item.icon"
-          rounded="lg"
           class="mb-2"
           active-color="primary"
           @click="drawer = false"
@@ -81,7 +78,6 @@
           color="primary"
           block
           size="large"
-          rounded="lg"
           prepend-icon="mdi-account-circle-outline"
           class="text-none font-weight-bold"
           @click="drawer = false"
@@ -174,7 +170,7 @@
               placeholder="Enter your email"
               hide-details
               bg-color="grey-darken-3"
-              class="rounded-lg mb-2"
+              class="mb-2"
             >
               <template v-slot:append-inner>
                 <v-btn color="primary" variant="flat" size="small" icon="mdi-send" />
