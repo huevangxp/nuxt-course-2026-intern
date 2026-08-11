@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card hover flat border rounded="xl" class="overflow-hidden">
+        <v-card hover flat border class="overflow-hidden">
             <v-row no-gutters align="center">
                 <v-col cols="12" md="6" class="pa-8 pa-md-12">
                     <v-chip color="primary" variant="tonal" size="small" class="mb-4 font-weight-bold">
@@ -13,11 +13,11 @@
                         ຮ້ານເຮົາເປັນສູນຈຳໜ່າຍໂທລະສັບມືຖື ແລະ ອຸປະກອນໄອທີຄຸນນະພາບສູງ ຂອງແທ້ 100% ພ້ອມໃບຮັບປະກັນສູນຢ່າງເປັນທາງການ.
                     </p>
                     <div class="d-flex ga-3">
-                        <v-btn color="primary" variant="flat" rounded="pill" size="large" to="/"
+                        <v-btn color="primary" variant="flat" size="large" to="/"
                             prepend-icon="mdi-cellphone" class="text-none font-weight-bold px-6">
                             ເລືອກຊື້ສິນຄ້າ
                         </v-btn>
-                        <v-btn to="/contact" variant="outlined" color="primary" rounded="pill" size="large"
+                        <v-btn to="/contact" variant="outlined" color="primary" size="large"
                             prepend-icon="mdi-phone" class="text-none font-weight-bold px-6">
                             ຕິດຕໍ່ເຮົາ
                         </v-btn>
