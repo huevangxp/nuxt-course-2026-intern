@@ -205,10 +205,10 @@ import { ref, computed } from 'vue'
 const drawer = ref(false)
 
 const navItems = [
-  { title: 'Home', to: '/', icon: 'mdi-home-outline' },
-  { title: 'About', to: '/about', icon: 'mdi-information-outline' },
-  { title: 'Services', to: '/services', icon: 'mdi-briefcase-outline' },
-  { title: 'Contact', to: '/contact', icon: 'mdi-email-outline' },
+  { title: 'ໜ້າຫຼັກ', to: '/', icon: 'mdi-home-outline' },
+  { title: 'ກ່ຽວກັບເຮົາ', to: '/about', icon: 'mdi-information-outline' },
+  { title: 'ບໍລິການ', to: '/services', icon: 'mdi-briefcase-outline' },
+  { title: 'ຕິດຕໍ່ເຮົາ', to: '/contact', icon: 'mdi-email-outline' },
 ]
 
 const categories = [
