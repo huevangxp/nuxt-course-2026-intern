@@ -21,10 +21,9 @@
           hover
           flat
           border
-          rounded="lg"
           class="fill-height d-flex flex-column pa-5"
         >
-          <v-avatar :color="service.color" variant="tonal" size="56" rounded="lg" class="mb-4">
+          <v-avatar :color="service.color" variant="tonal" size="56" class="mb-4">
             <v-icon size="28">{{ service.icon }}</v-icon>
           </v-avatar>
 
@@ -40,7 +39,6 @@
             color="primary"
             variant="tonal"
             size="small"
-            rounded="md"
             block
             class="text-none font-weight-bold"
           >
