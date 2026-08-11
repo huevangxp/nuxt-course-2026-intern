@@ -111,17 +111,33 @@
                 <v-row v-else>
                     <v-col v-for="product in products" :key="product.productId" cols="12" sm="6" md="4">
                         <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
-                            <div class="bg-grey-lighten-4 pa-4 text-center d-flex align-center justify-center position-relative"
-                                style="height: 180px;">
-                                <v-chip v-if="product.dealsFlag" color="warning" size="x-small"
-                                    class="position-absolute font-weight-bold" style="top: 8px; left: 8px;">
+                            <v-img
+                                v-if="product.productImageUrl"
+                                :src="'https://api.olaa.la/files/' + product.productImageUrl"
+                                height="220"
+                                cover
+                                class="bg-grey-lighten-4 align-start"
+                            >
+                                <v-chip
+                                    v-if="product.dealsFlag"
+                                    color="warning"
+                                    size="x-small"
+                                    class="ma-3 font-weight-bold"
+                                >
                                     {{ product.dealsFlag }}
                                 </v-chip>
-
-                                <v-img v-if="product.productImageUrl"
-                                    :src="'https://api.olaa.la/files/' + product.productImageUrl" aspect-ratio="1"
-                                    contain />
-                                <v-icon v-else size="64" color="grey-lighten-1">mdi-cellphone-off</v-icon>
+                            </v-img>
+                            <div v-else class="bg-grey-lighten-4 d-flex align-center justify-center position-relative" style="height: 220px;">
+                                <v-chip
+                                    v-if="product.dealsFlag"
+                                    color="warning"
+                                    size="x-small"
+                                    class="position-absolute font-weight-bold"
+                                    style="top: 12px; left: 12px;"
+                                >
+                                    {{ product.dealsFlag }}
+                                </v-chip>
+                                <v-icon size="64" color="grey-lighten-1">mdi-cellphone-off</v-icon>
                             </div>
 
                             <v-card-title class="font-weight-bold text-subtitle-2 px-4 pt-3 pb-1 text-truncate">
