@@ -25,7 +25,19 @@ export default defineNuxtConfig({
   },
   modules: ['vuetify-nuxt-module'],
   vuetify: {
-    /* Vuetify options */
+    vuetifyOptions: {
+      theme: {
+        defaultTheme: 'light',
+        themes: {
+          light: {
+            colors: {
+              primary: '#00695C', // Teal Darken-2
+              secondary: '#004D40', // Teal Darken-4
+            }
+          }
+        }
+      }
+    }
   },
   devServer: {
    port: 5000
