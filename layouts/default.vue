@@ -40,7 +40,7 @@
           class="text-none px-6 font-weight-bold"
           prepend-icon="mdi-account-circle-outline"
         >
-          Login
+          ເຂົ້າສູ່ລະບົບ
         </v-btn>
       </div>
 
@@ -86,7 +86,7 @@
           class="text-none font-weight-bold"
           @click="drawer = false"
         >
-          Login
+          ເຂົ້າສູ່ລະບົບ
         </v-btn>
       </v-list>
     </v-navigation-drawer>
