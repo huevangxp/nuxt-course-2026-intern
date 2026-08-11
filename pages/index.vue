@@ -26,10 +26,18 @@
         <v-row v-else>
             <v-col v-for="brand in brands" :key="brand.refBrandId" cols="12" sm="6" md="3" lg="3">
                 <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
-                    <div class="bg-grey-lighten-4 pa-6 text-center d-flex align-center justify-center"
-                        style="height: 140px;">
-                        <v-img :src="'https://api.olaa.la/v1' + brand.logoUrl" aspect-ratio="1" cover width="100"
-                            height="100"></v-img>
+                    <div class="bg-grey-lighten-4 pa-6 text-center d-flex align-center justify-center" style="height: 140px;">
+                        <v-img
+                            v-if="brand.logoUrl"
+                            :src="'https://api.olaa.la/files/' + brand.logoUrl"
+                            aspect-ratio="1"
+                            contain
+                            max-height="90"
+                            max-width="120"
+                        />
+                        <v-avatar v-else color="primary" variant="tonal" size="64">
+                            <v-icon size="36" color="primary">mdi-tag-outline</v-icon>
+                        </v-avatar>
                     </div>
                     <v-card-title class="font-weight-bold text-subtitle-1 px-4 pt-3 pb-1">
                         {{ brand.name }}
