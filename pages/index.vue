@@ -71,7 +71,7 @@ const loading = ref(true)
 const loadBrands = async () => {
     try {
         loading.value = true
-        const response = await axios.get('https://api.olaa.la/v1/api/purchasing/reference/brands/load-brand?skip=0&count=0&status=1')
+        const response = await $fetch('https://api.olaa.la/v1/api/purchasing/reference/brands/load-brand?skip=0&count=0&status=1')
         brands.value = response
         console.log(response)
     } catch (error) {
