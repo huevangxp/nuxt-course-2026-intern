@@ -5,9 +5,9 @@
       <!-- Brand Logo -->
       <v-btn variant="text" to="/" class="px-2 text-none font-weight-bold text-h6 text-primary d-flex align-center">
         <v-avatar color="primary" variant="tonal" size="40" class="mr-3">
-          <v-icon size="24" color="primary">mdi-school-outline</v-icon>
+          <v-icon size="24" color="primary">mdi-cellphone-link</v-icon>
         </v-avatar>
-        <span class="font-weight-bold text-h6">Edu<span class="text-primary">Course</span></span>
+        <span class="font-weight-bold text-h5 text-grey-darken-4">olaa<span class="text-primary">.la</span></span>
       </v-btn>
 
       <v-spacer />
@@ -51,10 +51,10 @@
       <v-list-item class="py-4">
         <template v-slot:prepend>
           <v-avatar color="primary" variant="tonal" size="36">
-            <v-icon size="20" color="primary">mdi-school-outline</v-icon>
+            <v-icon size="20" color="primary">mdi-cellphone-link</v-icon>
           </v-avatar>
         </template>
-        <v-list-item-title class="font-weight-bold text-h6">EduCourse</v-list-item-title>
+        <v-list-item-title class="font-weight-bold text-h6">olaa.la</v-list-item-title>
       </v-list-item>
       
       <v-divider />
@@ -89,7 +89,7 @@
 
     <!-- Main Content -->
     <v-main class="bg-grey-lighten-5">
-      <v-container class="py-6 px-4" fluid>
+      <v-container class="py-6 px-4" fluid style="max-width: 1320px;">
         <slot />
       </v-container>
     </v-main>
@@ -102,12 +102,12 @@
           <v-col cols="12" md="4" class="pr-md-8 mb-6 mb-md-0">
             <div class="d-flex align-center mb-4">
               <v-avatar color="primary" size="40" class="mr-3">
-                <v-icon size="24" color="white">mdi-school-outline</v-icon>
+                <v-icon size="24" color="white">mdi-cellphone-link</v-icon>
               </v-avatar>
-              <span class="text-h5 font-weight-bold text-white">Edu<span class="text-primary">Course</span></span>
+              <span class="text-h5 font-weight-bold text-white">olaa<span class="text-primary">.la</span></span>
             </div>
             <p class="text-body-2 text-grey-lighten-1 mb-6">
-              Empowering learners worldwide with cutting-edge online courses, hands-on tutorials, and expert-led tech programs.
+              olaa.la - ສູນຈຳໜ່າຍໂທລະສັບມືຖື, ແທັບເລັດ ແລະ ອຸປະກອນໄອທີຄຸນນະພາບສູງ ຂອງແທ້ 100% ພ້ອມໃບຮັບປະກັນສູນຢ່າງເປັນທາງການ.
             </p>
             <div class="d-flex ga-2">
               <v-btn
@@ -125,7 +125,7 @@
 
           <!-- Column 2: Quick Links -->
           <v-col cols="6" sm="4" md="2" class="mb-6 mb-md-0">
-            <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">Quick Links</h4>
+            <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">ເມນູຫຼັກ</h4>
             <div class="d-flex flex-column ga-2">
               <v-btn
                 v-for="item in navItems"
@@ -143,7 +143,7 @@
 
           <!-- Column 3: Categories -->
           <v-col cols="6" sm="4" md="3" class="mb-6 mb-md-0">
-            <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">Categories</h4>
+            <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">ໝວດໝູ່ສິນຄ້າ</h4>
             <div class="d-flex flex-column ga-2">
               <v-btn
                 v-for="category in categories"
@@ -160,14 +160,14 @@
 
           <!-- Column 4: Contact & Newsletter -->
           <v-col cols="12" sm="4" md="3">
-            <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">Stay Updated</h4>
+            <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">ຮັບຂໍ້ມູນຂ່າວສານ</h4>
             <p class="text-caption text-grey-lighten-1 mb-4">
-              Subscribe to get latest course releases and technology news.
+              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນ ແລະ ສິນຄ້າໃໝ່ກ່ອນໃຜ.
             </p>
             <v-text-field
               density="compact"
               variant="solo-filled"
-              placeholder="Enter your email"
+              placeholder="ປ້ອນອີເມວຂອງທ່ານ"
               hide-details
               bg-color="teal-darken-3"
               class="mb-2"
@@ -177,17 +177,16 @@
               </template>
             </v-text-field>
           </v-col>
-        </v-row>
+        </row>
 
         <v-divider class="my-8 border-opacity-25" color="grey-lighten-1" />
 
         <!-- Sub-footer copyright -->
         <div class="d-flex flex-column flex-sm-row justify-space-between align-center text-caption text-grey-lighten-2 ga-2">
-          <span>&copy; {{ currentYear }} EduCourse Inc. All rights reserved.</span>
+          <span>&copy; {{ currentYear }} olaa.la Online Store. All rights reserved.</span>
           <div class="d-flex ga-4 mt-2 mt-sm-0">
-            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">Privacy Policy</v-btn>
-            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">Terms of Service</v-btn>
-            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">Cookie Settings</v-btn>
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</v-btn>
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">ເງື່ອນໄຂການໃຊ້ງານ</v-btn>
           </div>
         </div>
       </v-container>
@@ -208,11 +207,11 @@ const navItems = [
 ]
 
 const categories = [
-  'Web Development',
-  'Mobile App Dev',
-  'UI/UX Design',
-  'Data Science & AI',
-  'Cloud Architecture'
+  'ໂທລະສັບມືຖື (Smartphones)',
+  'ແທັບເລັດ (Tablets)',
+  'ອຸປະກອນເສີມ (Accessories)',
+  'ກ້ອງ & ວິດີໂອ (Cameras)',
+  'ອຸປະກອນອັດສະລິຍະ (Smart Devices)'
 ]
 
 const socialLinks = [
