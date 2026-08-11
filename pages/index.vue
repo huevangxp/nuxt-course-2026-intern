@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Modern Carousel -->
-        <v-carousel :show-arrows="false" autoplay cycle hide-delimiters height="450" rounded="xl" elevation="2"
+        <v-carousel :show-arrows="false" autoplay cycle hide-delimiters height="450" elevation="2"
             class="overflow-hidden">
             <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover />
         </v-carousel>
@@ -9,7 +9,7 @@
         <!-- Category Section -->
         <v-row class="my-6 align-center">
             <v-col cols="auto">
-                <v-btn color="primary" variant="flat" rounded="pill" size="large" prepend-icon="mdi-shape-outline"
+                <v-btn color="primary" variant="flat" size="large" prepend-icon="mdi-shape-outline"
                     class="text-none font-weight-bold px-6">
                     ໝວດໝູ່
                 </v-btn>
@@ -19,7 +19,7 @@
         <!-- Cards Grid -->
         <v-row>
             <v-col v-for="(phone, index) in phones" :key="index" cols="12" sm="6" md="3" lg="3">
-                <v-card hover flat border rounded="lg" class="fill-height d-flex flex-column overflow-hidden">
+                <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
                     <v-img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tWPHKDHlokD9NvwKyJJ-W-bVYnvpjSWn5aapFZK9N8acNFjH-foSNVgT&s=10"
                         cover />
@@ -33,7 +33,7 @@
                         <span class="text-subtitle-1 font-weight-bold text-primary">
                             {{ phone.price }}
                         </span>
-                        <v-btn color="primary" variant="tonal" size="small" rounded="md"
+                        <v-btn color="primary" variant="tonal" size="small"
                             class="text-none font-weight-bold">
                             ຊື້ດຽວນີ້
                         </v-btn>
