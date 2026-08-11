@@ -95,7 +95,7 @@
     </v-main>
 
     <!-- Footer -->
-    <v-footer class="bg-grey-darken-4 text-grey-lighten-1 flex-column pa-0">
+    <v-footer class="bg-teal-darken-4 text-grey-lighten-1 flex-column pa-0">
       <v-container class="py-12 px-6 px-md-12" fluid max-width="1280">
         <v-row>
           <!-- Column 1: Brand & Bio -->
@@ -169,7 +169,7 @@
               variant="solo-filled"
               placeholder="Enter your email"
               hide-details
-              bg-color="grey-darken-3"
+              bg-color="teal-darken-3"
               class="mb-2"
             >
               <template v-slot:append-inner>
