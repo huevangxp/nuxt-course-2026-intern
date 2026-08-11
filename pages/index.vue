@@ -224,12 +224,12 @@
                                     <v-icon size="64" color="grey-lighten-1">mdi-cellphone-off</v-icon>
                                 </div>
 
-                                <v-card-title class="font-weight-bold text-subtitle-2 px-4 pt-3 pb-1 text-truncate">
+                                <v-card-title class="font-weight-bold px-4 pt-3 pb-1 text-truncate" style="font-size: 16px;">
                                     {{ product.productTitle }}
                                 </v-card-title>
 
-                                <v-card-text class="px-4 pb-2 flex-grow-1">
-                                    <div class="d-flex align-center ga-1 text-caption text-medium-emphasis">
+                                <v-card-text class="px-4 pb-2 flex-grow-1" style="font-size: 12px;">
+                                    <div class="d-flex align-center ga-1 text-medium-emphasis" style="font-size: 12px;">
                                         <v-icon size="14" color="success">mdi-check-circle-outline</v-icon>
                                         <span>{{ product.hasStock ? 'ມີສິນຄ້າ' : 'ສິນຄ້າໝົດ' }}</span>
                                     </div>
