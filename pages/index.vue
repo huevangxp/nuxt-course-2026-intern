@@ -120,7 +120,7 @@
 
                                 <v-img v-if="product.productImageUrl"
                                     :src="'https://api.olaa.la/files/' + product.productImageUrl" aspect-ratio="1"
-                                    contain max-height="150" />
+                                    contain />
                                 <v-icon v-else size="64" color="grey-lighten-1">mdi-cellphone-off</v-icon>
                             </div>
 
