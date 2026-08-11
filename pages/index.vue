@@ -6,36 +6,44 @@
             <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover />
         </v-carousel>
 
-        <!-- Category Section -->
-        <v-row class="my-6 align-center">
+        <!-- Category / Brands Header Section -->
+        <v-row class="my-6 align-center justify-space-between">
             <v-col cols="auto">
                 <v-btn color="primary" variant="flat" size="large" prepend-icon="mdi-shape-outline"
                     class="text-none font-weight-bold px-6">
-                    ໝວດໝູ່
+                    ແບຣນສິນຄ້າທັງໝົດ ({{ brands.length }})
                 </v-btn>
             </v-col>
         </v-row>
 
-        <!-- Cards Grid -->
-        <v-row>
-            <v-col v-for="(phone, index) in phones" :key="index" cols="12" sm="6" md="3" lg="3">
+        <!-- Loading State -->
+        <div v-if="loading" class="text-center py-12">
+            <v-progress-circular indeterminate color="primary" size="64" width="6" />
+            <div class="mt-4 text-subtitle-1 font-weight-bold text-medium-emphasis">ກຳລັງໂຫຼດຂໍ້ມູນແບຣນ...</div>
+        </div>
+
+        <!-- Brands Grid -->
+        <v-row v-else>
+            <v-col v-for="brand in brands" :key="brand.refBrandId" cols="12" sm="6" md="3" lg="3">
                 <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
-                    <v-img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tWPHKDHlokD9NvwKyJJ-W-bVYnvpjSWn5aapFZK9N8acNFjH-foSNVgT&s=10"
-                        cover />
+                    <div class="bg-grey-lighten-4 pa-6 text-center d-flex align-center justify-center" style="height: 140px;">
+                        <v-avatar color="primary" variant="tonal" size="64">
+                            <v-icon size="36" color="primary">mdi-tag-outline</v-icon>
+                        </v-avatar>
+                    </div>
                     <v-card-title class="font-weight-bold text-subtitle-1 px-4 pt-3 pb-1">
-                        {{ phone.name }}
+                        {{ brand.name }}
                     </v-card-title>
                     <v-card-text class="text-caption text-medium-emphasis px-4 pb-2 flex-grow-1">
-                        {{ phone.desc }}
+                        ລະຫັດແບຣນ: #{{ brand.refBrandId }} | ດຳເນີນການຢູ່
                     </v-card-text>
                     <v-card-actions class="px-4 pb-4 pt-0 d-flex align-center justify-space-between">
-                        <span class="text-subtitle-1 font-weight-bold text-primary">
-                            {{ phone.price }}
+                        <span class="text-caption font-weight-bold text-success">
+                            ✓ ເປີດໃຊ້ງານ
                         </span>
                         <v-btn color="primary" variant="tonal" size="small"
                             class="text-none font-weight-bold">
-                            ຊື້ດຽວນີ້
+                            ເບິ່ງສິນຄ້າ
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -45,6 +53,9 @@
 </template>
 
 <script setup>
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
+
 const items = [
     {
         src: './images/slice1.jpg',
@@ -54,18 +65,22 @@ const items = [
     },
 ]
 
-const phones = [
-    { name: 'iPhone 15 Pro Max', desc: '256GB, ສີຟ້າໄທເທນຽມ, ຊິບ A17 Pro, ກ້ອງ 48MP', price: '$1,199' },
-    { name: 'Samsung Galaxy S24 Ultra', desc: '512GB, ສີເທົາໄທເທນຽມ, ຊິບ Snapdragon 8 Gen 3', price: '$1,299' },
-    { name: 'Google Pixel 8 Pro', desc: '128GB, ສີດໍາ Obsidian, ຊິບ Tensor G3, ກ້ອງ AI', price: '$999' },
-    { name: 'Xiaomi 14 Ultra', desc: '512GB, ສີດໍາ, ກ້ອງ Leica Quad, ຈໍ 120Hz AMOLED', price: '$1,099' },
-    { name: 'OnePlus 12', desc: '256GB, ສີດໍາ Silky, RAM 16GB, ຊາດໄວ 100W', price: '$799' },
-    { name: 'ASUS ROG Phone 8', desc: '512GB, ສີດໍາ Phantom, ຈໍເກມມິງ 165Hz', price: '$1,099' },
-    { name: 'Sony Xperia 1 VI', desc: '256GB, ສີດໍາ, ຈໍ 4K HDR OLED, ເຊັນເຊີ Exmor T', price: '$1,399' },
-    { name: 'Nothing Phone (2)', desc: '256GB, ສີເທົາດໍາ, ໄຟ Glyph Interface, Snapdragon 8+', price: '$699' },
-    { name: 'Honor Magic 6 Pro', desc: '512GB, ສີຂຽວ Epi, ລະບົບກ້ອງ Falcon', price: '$1,049' },
-    { name: 'Vivo X100 Pro', desc: '256GB, ສີດໍາ Asteroid, ເລນ ZEISS, Dimensity 9300', price: '$999' },
-    { name: 'Motorola Edge 50 Ultra', desc: '512GB, ສີສົ້ມ Peach Fuzz, ຊາດໄວ 125W', price: '$899' },
-    { name: 'Realme GT 5 Pro', desc: '256GB, ສີແດງ Red Rock, ຊິບ Snapdragon 8 Gen 3', price: '$649' }
-]
+const brands = ref([])
+const loading = ref(true)
+
+const loadBrands = async () => {
+    try {
+        loading.value = true
+        const response = await axios.get('https://api.olaa.la/v1/api/purchasing/reference/brands/load-brand?skip=0&count=0&status=1')
+        brands.value = response.data
+    } catch (error) {
+        console.error('Error fetching brands:', error)
+    } finally {
+        loading.value = false
+    }
+}
+
+onMounted(() => {
+    loadBrands()
+})
 </script>
