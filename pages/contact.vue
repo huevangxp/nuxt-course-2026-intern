@@ -10,7 +10,7 @@
     <v-row>
       <!-- Contact Form Column -->
       <v-col cols="12" md="7">
-        <v-card flat border rounded="xl" class="pa-6 pa-md-8">
+        <v-card flat border class="pa-6 pa-md-8">
           <h2 class="text-h5 font-weight-bold mb-4">ຟອມຕິດຕໍ່</h2>
           <v-form @submit.prevent="submitForm">
             <v-row>
@@ -80,7 +80,6 @@
                   type="submit"
                   color="primary"
                   size="large"
-                  rounded="pill"
                   block
                   prepend-icon="mdi-send"
                   class="text-none font-weight-bold"
@@ -95,7 +94,7 @@
 
       <!-- Store Info Column -->
       <v-col cols="12" md="5">
-        <v-card flat border rounded="xl" class="pa-6 pa-md-8 fill-height d-flex flex-column justify-space-between bg-grey-lighten-4">
+        <v-card flat border class="pa-6 pa-md-8 fill-height d-flex flex-column justify-space-between bg-grey-lighten-4">
           <div>
             <h2 class="text-h5 font-weight-bold mb-4 text-primary">ຂໍ້ມູນຕິດຕໍ່ຮ້ານ</h2>
             <div class="d-flex flex-column ga-4">
