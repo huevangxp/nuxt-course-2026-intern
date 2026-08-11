@@ -22,7 +22,6 @@
                 <v-card hover flat border rounded="lg" class="fill-height d-flex flex-column overflow-hidden">
                     <v-img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tWPHKDHlokD9NvwKyJJ-W-bVYnvpjSWn5aapFZK9N8acNFjH-foSNVgT&s=10"
-                        height="180"
                         cover />
                     <v-card-title class="font-weight-bold text-subtitle-1 px-4 pt-3 pb-1">
                         {{ phone.name }}
@@ -34,7 +33,8 @@
                         <span class="text-subtitle-1 font-weight-bold text-primary">
                             {{ phone.price }}
                         </span>
-                        <v-btn color="primary" variant="tonal" size="small" rounded="md" class="text-none font-weight-bold">
+                        <v-btn color="primary" variant="tonal" size="small" rounded="md"
+                            class="text-none font-weight-bold">
                             Buy Now
                         </v-btn>
                     </v-card-actions>
