@@ -278,6 +278,13 @@ const items = [
     { src: './images/slice2.jpg' }
 ]
 
+const highlights = [
+    { icon: 'mdi-truck-fast-outline', title: 'ຈັດສົ່ງໄວທົ່ວປະເທດ', subtitle: 'ສົ່ງເຖິງທີ່ຢ່າງປອດໄພ', color: 'primary' },
+    { icon: 'mdi-shield-check-outline', title: 'ຂອງແທ້ 100%', subtitle: 'ປະກັນສູນຢ່າງເປັນທາງການ', color: 'success' },
+    { icon: 'mdi-credit-card-outline', title: 'ບໍລິການຜ່ອນ 0%', subtitle: 'ເງື່ອນໄຂງ່າຍ ອະນຸມັດໄວ', color: 'warning' },
+    { icon: 'mdi-headset', title: 'ບໍລິການ 24/7', subtitle: 'ທີມງານຄອຍໃຫ້ຄຳປຶກສາ', color: 'info' }
+]
+
 const categories = [
     { id: 0, name: 'ໝວດໝູ່ທັງໝົດ (All)', icon: 'mdi-apps' },
     { id: 1, name: 'ໂທລະສັບມືຖື (Smartphones)', icon: 'mdi-cellphone' },
