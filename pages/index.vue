@@ -1,7 +1,7 @@
 <template>
     <div>
-        <!-- Modern Hero Carousel -->
-        <v-card flat class="rounded-2xl overflow-hidden elevation-3 mb-8 position-relative border">
+        <!-- Hero Carousel in Black & Pink Luxury -->
+        <v-card flat class="rounded-2xl overflow-hidden elevation-8 mb-8 position-relative border" style="border-color: rgba(255, 42, 133, 0.25) !important;">
             <v-carousel
                 :show-arrows="false"
                 autoplay
@@ -11,17 +11,17 @@
                 class="overflow-hidden"
             >
                 <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
-                    <!-- Gradient Overlay for Contrast -->
+                    <!-- Dark Gradient Overlay -->
                     <div
                         class="fill-height d-flex align-end pa-8"
-                        style="background: linear-gradient(180deg, rgba(15, 23, 42, 0) 40%, rgba(15, 23, 42, 0.75) 100%);"
+                        style="background: linear-gradient(180deg, rgba(9, 9, 13, 0) 30%, rgba(9, 9, 13, 0.88) 100%);"
                     >
                         <div class="text-white">
-                            <v-chip color="primary" variant="flat" size="small" class="mb-2 font-weight-bold btn-gradient">
-                                ໂປຣໂມຊັນພິເສດ
+                            <v-chip color="primary" variant="flat" size="small" class="mb-3 font-weight-bold btn-gradient">
+                                <v-icon size="14" class="mr-1">mdi-fire</v-icon> BLACK &amp; PINK EDITION
                             </v-chip>
-                            <h3 class="text-h5 text-md-h4 font-weight-black">
-                                ສິນຄ້າໄອທີ & ເທັກໂນໂລຢີ ຫຼຸດລາຄາພິເສດທີ່ HueDev
+                            <h3 class="text-h5 text-md-h4 font-weight-black text-white">
+                                ສິນຄ້າເທັກໂນໂລຢີ &amp; ແກັບເຈັດສຸດພຣີມຽມທີ່ <span class="text-gradient">HueDev</span>
                             </h3>
                         </div>
                     </div>
@@ -32,12 +32,12 @@
         <!-- Store Feature Highlights Bar -->
         <v-row class="mb-8">
             <v-col v-for="(highlight, hIdx) in highlights" :key="hIdx" cols="6" sm="3">
-                <v-card flat border class="pa-5 text-center fill-height d-flex flex-column align-center justify-center rounded-2xl hover-lift bg-surface">
-                    <v-avatar :color="highlight.color" variant="tonal" size="52" class="mb-3 rounded-xl">
-                        <v-icon size="26">{{ highlight.icon }}</v-icon>
+                <v-card flat border class="pa-5 text-center fill-height d-flex flex-column align-center justify-center rounded-2xl hover-lift bg-surface" style="border-color: rgba(255, 255, 255, 0.08) !important;">
+                    <v-avatar color="primary" variant="tonal" size="52" class="mb-3 rounded-xl" style="background: rgba(255, 42, 133, 0.12) !important;">
+                        <v-icon size="26" color="primary">{{ highlight.icon }}</v-icon>
                     </v-avatar>
-                    <div class="text-subtitle-2 font-weight-bold text-grey-darken-4">{{ highlight.title }}</div>
-                    <div class="text-caption text-medium-emphasis mt-1">{{ highlight.subtitle }}</div>
+                    <div class="text-subtitle-2 font-weight-bold text-white">{{ highlight.title }}</div>
+                    <div class="text-caption text-grey-lighten-1 mt-1">{{ highlight.subtitle }}</div>
                 </v-card>
             </v-col>
         </v-row>
@@ -47,22 +47,22 @@
             <!-- Left Sidebar: Categories & Brands Filter -->
             <v-col cols="12" md="3">
                 <!-- Filter Card -->
-                <v-card flat border class="overflow-hidden mb-6 rounded-2xl bg-surface">
+                <v-card flat border class="overflow-hidden mb-6 rounded-2xl bg-surface" style="border-color: rgba(255, 42, 133, 0.2) !important;">
                     <v-card-item class="btn-gradient text-white py-4 px-5">
                         <template v-slot:prepend>
                             <v-icon size="24" class="mr-2">mdi-filter-variant</v-icon>
                         </template>
-                        <v-card-title class="text-subtitle-1 font-weight-bold">
+                        <v-card-title class="text-subtitle-1 font-weight-bold text-white">
                             ຕົວຕອງສິນຄ້າ (Filters)
                         </v-card-title>
                     </v-card-item>
 
                     <!-- Category Selection List -->
-                    <div class="pa-4 pb-2 font-weight-bold text-caption text-uppercase text-medium-emphasis d-flex align-center">
+                    <div class="pa-4 pb-2 font-weight-bold text-caption text-uppercase text-grey-lighten-1 d-flex align-center">
                         <v-icon size="16" class="mr-1 text-primary">mdi-shape-outline</v-icon> ໝວດໝູ່ສິນຄ້າ (Categories)
                     </div>
 
-                    <v-list density="compact" nav class="px-3 pt-0 pb-2">
+                    <v-list density="compact" nav class="px-3 pt-0 pb-2 bg-surface">
                         <v-list-item
                             v-for="cat in categories"
                             :key="cat.id"
@@ -73,7 +73,7 @@
                             @click="selectCategory(cat.id, cat.name)"
                         >
                             <template v-slot:prepend>
-                                <v-icon size="18" class="mr-2" :color="selectedCatId === cat.id ? 'primary' : 'grey-darken-1'">
+                                <v-icon size="18" class="mr-2" :color="selectedCatId === cat.id ? 'primary' : 'grey-lighten-1'">
                                     {{ cat.icon }}
                                 </v-icon>
                             </template>
@@ -83,10 +83,10 @@
                         </v-list-item>
                     </v-list>
 
-                    <v-divider class="my-2 border-opacity-50" />
+                    <v-divider class="my-2 border-opacity-25" color="pink" />
 
                     <!-- Brand Selection Section -->
-                    <div class="pa-4 pb-2 font-weight-bold text-caption text-uppercase text-medium-emphasis d-flex align-center">
+                    <div class="pa-4 pb-2 font-weight-bold text-caption text-uppercase text-grey-lighten-1 d-flex align-center">
                         <v-icon size="16" class="mr-1 text-primary">mdi-tag-outline</v-icon> ແບຣນສິນຄ້າ (Brands)
                     </div>
 
@@ -101,6 +101,7 @@
                             hide-details
                             clearable
                             class="rounded-xl"
+                            bg-color="surface"
                         />
                     </div>
 
@@ -110,7 +111,7 @@
                     </div>
 
                     <!-- Brand List -->
-                    <v-list v-else density="comfortable" nav class="px-3 pb-3 overflow-y-auto" style="max-height: 380px;">
+                    <v-list v-else density="comfortable" nav class="px-3 pb-3 overflow-y-auto bg-surface" style="max-height: 380px;">
                         <!-- All Brands Option -->
                         <v-list-item
                             :active="selectedBrandId === 0"
@@ -121,7 +122,7 @@
                         >
                             <template v-slot:prepend>
                                 <v-avatar color="primary" variant="tonal" size="28" class="mr-2 rounded-lg">
-                                    <v-icon size="16">mdi-apps</v-icon>
+                                    <v-icon size="16" color="primary">mdi-apps</v-icon>
                                 </v-avatar>
                             </template>
                             <v-list-item-title class="font-weight-bold text-body-2">
@@ -136,11 +137,11 @@
                             :active="selectedBrandId === brand.refBrandId"
                             color="primary"
                             variant="flat"
-                            class="mb-1 rounded-xl"
+                            class="mb-1 rounded-xl text-grey-lighten-2"
                             @click="selectBrand(brand.refBrandId, brand.name)"
                         >
                             <template v-slot:prepend>
-                                <v-avatar color="grey-lighten-4" size="28" class="mr-2 rounded-lg border">
+                                <v-avatar color="surface" size="28" class="mr-2 rounded-lg border">
                                     <v-img
                                         v-if="brand.logoUrl"
                                         :src="'https://api.olaa.la/files/' + brand.logoUrl"
@@ -160,7 +161,7 @@
             <!-- Right Main: Products Grid -->
             <v-col cols="12" md="9">
                 <!-- Top Toolbar & Product Search -->
-                <v-card flat border class="pa-4 mb-6 rounded-2xl bg-surface">
+                <v-card flat border class="pa-4 mb-6 rounded-2xl bg-surface" style="border-color: rgba(255, 42, 133, 0.2) !important;">
                     <v-row align="center" justify="space-between" class="ga-2">
                         <v-col cols="12" sm="auto">
                             <div class="d-flex align-center ga-3">
@@ -168,14 +169,14 @@
                                     <v-icon size="22" color="white">mdi-shopping-outline</v-icon>
                                 </div>
                                 <div>
-                                    <h2 class="text-subtitle-1 font-weight-bold text-grey-darken-4 mb-0">
+                                    <h2 class="text-subtitle-1 font-weight-bold text-white mb-0">
                                         {{ selectedCatName }}
                                     </h2>
                                     <div class="d-flex align-center ga-2 mt-1">
-                                        <v-chip size="x-small" color="primary" variant="tonal" class="font-weight-bold">
+                                        <v-chip size="x-small" color="primary" variant="tonal" class="font-weight-bold" style="background: rgba(255, 42, 133, 0.15) !important;">
                                             {{ selectedBrandName }}
                                         </v-chip>
-                                        <span class="text-caption text-medium-emphasis">
+                                        <span class="text-caption text-grey-lighten-1">
                                             ພົບ {{ displayedProducts.length }} ລາຍການ
                                         </span>
                                     </div>
@@ -191,7 +192,7 @@
                                 hide-details
                                 density="compact"
                                 label="ສະແດງສະເພາະທີ່ມີຮູບ"
-                                class="font-weight-semibold text-body-2"
+                                class="font-weight-semibold text-body-2 text-white"
                             />
 
                             <v-text-field
@@ -204,6 +205,7 @@
                                 clearable
                                 style="min-width: 230px;"
                                 class="rounded-pill"
+                                bg-color="surface"
                                 @update:model-value="onSearchProduct"
                             />
                         </v-col>
@@ -213,18 +215,18 @@
                 <!-- Loading Products State -->
                 <div v-if="loadingProducts && products.length === 0" class="text-center py-16">
                     <v-progress-circular indeterminate color="primary" size="64" width="6" />
-                    <div class="mt-4 text-subtitle-1 font-weight-bold text-medium-emphasis">
-                        ກຳລັງໂຫຼດຂໍ້ມູນສິນຄ້າຈາກ HueDev...
+                    <div class="mt-4 text-subtitle-1 font-weight-bold text-grey-lighten-1">
+                        ກຳລັງໂຫຼດຂໍ້ມູນສິນຄ້າ...
                     </div>
                 </div>
 
                 <!-- No Products Found -->
-                <v-card v-else-if="displayedProducts.length === 0" flat border class="pa-16 text-center rounded-2xl bg-surface">
-                    <v-avatar color="primary" variant="tonal" size="80" class="mb-4">
-                        <v-icon size="42">mdi-package-variant-remove</v-icon>
+                <v-card v-else-if="displayedProducts.length === 0" flat border class="pa-16 text-center rounded-2xl bg-surface" style="border-color: rgba(255, 42, 133, 0.2) !important;">
+                    <v-avatar color="primary" variant="tonal" size="80" class="mb-4" style="background: rgba(255, 42, 133, 0.12) !important;">
+                        <v-icon size="42" color="primary">mdi-package-variant-remove</v-icon>
                     </v-avatar>
-                    <h3 class="text-h6 font-weight-bold">ບໍ່ພົບສິນຄ້າທີ່ກົງກັບເງື່ອນໄຂ</h3>
-                    <p class="text-body-2 text-medium-emphasis mb-6">ກະລຸນາລອງເລືອກໝວດໝູ່ ຫຼື ແບຣນອື່ນ</p>
+                    <h3 class="text-h6 font-weight-bold text-white">ບໍ່ພົບສິນຄ້າທີ່ກົງກັບເງື່ອນໄຂ</h3>
+                    <p class="text-body-2 text-grey-lighten-1 mb-6">ກະລຸນາລອງເລືອກໝວດໝູ່ ຫຼື ແບຣນອື່ນ</p>
                     <v-btn variant="flat" class="text-none font-weight-bold btn-gradient rounded-pill px-8" @click="resetFilters">
                         ລ້າງຕົວຕອງທັງໝົດ
                     </v-btn>
@@ -240,14 +242,14 @@
                             sm="6"
                             md="4"
                         >
-                            <v-card flat border class="fill-height d-flex flex-column overflow-hidden rounded-2xl hover-lift bg-surface">
+                            <v-card flat border class="fill-height d-flex flex-column overflow-hidden rounded-2xl hover-lift bg-surface" style="border-color: rgba(255, 255, 255, 0.08) !important;">
                                 <!-- Product Image Area with Zoom & Click Preview -->
                                 <div class="position-relative overflow-hidden cursor-pointer img-zoom-wrapper" @click="openImageModal(product)">
                                     <v-img
                                         :src="getProductImageUrl(product)"
                                         height="230"
                                         cover
-                                        class="bg-grey-lighten-4 align-start"
+                                        class="bg-grey-darken-4 align-start"
                                         @error="onImageError(product.productId)"
                                     >
                                         <!-- Loading Placeholder -->
@@ -259,7 +261,7 @@
 
                                         <!-- Error Fallback -->
                                         <template v-slot:error>
-                                            <div class="d-flex flex-column align-center justify-center fill-height bg-grey-lighten-4">
+                                            <div class="d-flex flex-column align-center justify-center fill-height bg-grey-darken-4">
                                                 <v-img src="/images/placeholder-product.svg" height="230" contain />
                                             </div>
                                         </template>
@@ -276,23 +278,23 @@
 
                                         <!-- Quick Preview Magnifier Button -->
                                         <div class="position-absolute" style="bottom: 10px; right: 10px;">
-                                            <v-avatar size="32" color="surface" class="elevation-2" style="opacity: 0.9;">
+                                            <v-avatar size="32" color="surface" class="elevation-4 border" style="border-color: rgba(255, 42, 133, 0.4) !important;">
                                                 <v-icon size="18" color="primary">mdi-magnify-plus-outline</v-icon>
                                             </v-avatar>
                                         </div>
                                     </v-img>
                                 </div>
 
-                                <v-card-title class="font-weight-bold px-4 pt-3 pb-1 text-truncate text-grey-darken-4" style="font-size: 15px;">
+                                <v-card-title class="font-weight-bold px-4 pt-3 pb-1 text-truncate text-white" style="font-size: 15px;">
                                     {{ product.productTitle }}
                                 </v-card-title>
 
                                 <v-card-text class="px-4 pb-2 flex-grow-1" style="font-size: 12px;">
-                                    <div class="d-flex align-center ga-1 text-medium-emphasis">
+                                    <div class="d-flex align-center ga-1">
                                         <v-icon size="14" :color="product.hasStock ? 'success' : 'grey'">
                                             {{ product.hasStock ? 'mdi-check-circle' : 'mdi-alert-circle' }}
                                         </v-icon>
-                                        <span :class="product.hasStock ? 'text-success font-weight-medium' : 'text-medium-emphasis'">
+                                        <span :class="product.hasStock ? 'text-success font-weight-medium' : 'text-grey-lighten-1'">
                                             {{ product.hasStock ? 'ມີສິນຄ້າພ້ອມສົ່ງ' : 'ສິນຄ້າໝົດຊົ່ວຄາວ' }}
                                         </span>
                                     </div>
@@ -300,8 +302,8 @@
 
                                 <v-card-actions class="px-4 pb-4 pt-1 d-flex align-center justify-space-between">
                                     <div>
-                                        <div class="text-caption text-medium-emphasis" style="font-size: 10px;">ລາຄາ</div>
-                                        <span class="text-h6 font-weight-black text-primary">
+                                        <div class="text-caption text-grey-lighten-1" style="font-size: 10px;">ລາຄາ</div>
+                                        <span class="text-h6 font-weight-black text-primary" style="letter-spacing: -0.5px;">
                                             ₭{{ product.price ? product.price.toLocaleString() : '0' }}
                                         </span>
                                     </div>
@@ -322,12 +324,11 @@
                     <div class="text-center mt-10 mb-4">
                         <v-btn
                             v-if="hasMoreProducts"
-                            color="primary"
                             variant="outlined"
                             size="large"
                             :loading="loadingMore"
                             prepend-icon="mdi-plus"
-                            class="text-none font-weight-bold px-8 rounded-pill border"
+                            class="text-none font-weight-bold px-8 rounded-pill btn-pink-outline"
                             @click="loadMoreProducts"
                         >
                             ໂຫຼດສິນຄ້າເພີ່ມເຕີມ
@@ -339,20 +340,21 @@
 
         <!-- Product Image & Detail Preview Modal -->
         <v-dialog v-model="previewDialog" max-width="560">
-            <v-card v-if="selectedProduct" class="rounded-2xl overflow-hidden elevation-16">
-                <v-card-title class="d-flex justify-space-between align-center pa-4 bg-grey-lighten-5 border-b">
-                    <div class="text-subtitle-1 font-weight-bold text-truncate text-grey-darken-4" style="max-width: 85%;">
+            <v-card v-if="selectedProduct" class="rounded-2xl overflow-hidden elevation-24 bg-surface" style="border: 1px solid rgba(255, 42, 133, 0.35) !important;">
+                <v-card-title class="d-flex justify-space-between align-center pa-4 bg-surface border-b" style="border-color: rgba(255, 42, 133, 0.2) !important;">
+                    <div class="text-subtitle-1 font-weight-bold text-truncate text-white" style="max-width: 85%;">
                         {{ selectedProduct.productTitle }}
                     </div>
-                    <v-btn icon="mdi-close" variant="text" size="small" @click="previewDialog = false" />
+                    <v-btn icon="mdi-close" variant="text" size="small" color="primary" @click="previewDialog = false" />
                 </v-card-title>
 
-                <div class="pa-5 bg-white text-center">
+                <div class="pa-5 bg-surface text-center">
                     <v-img
                         :src="getProductImageUrl(selectedProduct)"
                         height="360"
                         contain
-                        class="rounded-xl bg-grey-lighten-5 border"
+                        class="rounded-xl bg-grey-darken-4 border"
+                        style="border-color: rgba(255, 255, 255, 0.1) !important;"
                     >
                         <template v-slot:placeholder>
                             <div class="d-flex align-center justify-center fill-height">
@@ -363,7 +365,7 @@
 
                     <div class="mt-5 d-flex justify-space-between align-center">
                         <div class="text-left">
-                            <div class="text-caption text-medium-emphasis">ລາຄາສິນຄ້າ</div>
+                            <div class="text-caption text-grey-lighten-1">ລາຄາສິນຄ້າ</div>
                             <div class="text-h5 font-weight-black text-primary">
                                 ₭{{ selectedProduct.price ? selectedProduct.price.toLocaleString() : '0' }}
                             </div>
@@ -390,10 +392,10 @@ const items = [
 ]
 
 const highlights = [
-    { icon: 'mdi-truck-fast-outline', title: 'ຈັດສົ່ງໄວທົ່ວປະເທດ', subtitle: 'ສົ່ງເຖິງທີ່ຢ່າງປອດໄພ', color: 'primary' },
-    { icon: 'mdi-shield-check-outline', title: 'ຂອງແທ້ 100%', subtitle: 'ປະກັນສູນຢ່າງເປັນທາງການ', color: 'success' },
-    { icon: 'mdi-credit-card-outline', title: 'ບໍລິການຜ່ອນ 0%', subtitle: 'ເງື່ອນໄຂງ່າຍ ອະນຸມັດໄວ', color: 'warning' },
-    { icon: 'mdi-headset', title: 'ບໍລິການ 24/7', subtitle: 'ທີມງານຄອຍໃຫ້ຄຳປຶກສາ', color: 'info' }
+    { icon: 'mdi-truck-fast-outline', title: 'ຈັດສົ່ງໄວທົ່ວປະເທດ', subtitle: 'ສົ່ງເຖິງທີ່ຢ່າງປອດໄພ' },
+    { icon: 'mdi-shield-check-outline', title: 'ຂອງແທ້ 100%', subtitle: 'ປະກັນສູນຢ່າງເປັນທາງການ' },
+    { icon: 'mdi-credit-card-outline', title: 'ບໍລິການຜ່ອນ 0%', subtitle: 'ເງື່ອນໄຂງ່າຍ ອະນຸມັດໄວ' },
+    { icon: 'mdi-headset', title: 'ບໍລິການ 24/7', subtitle: 'ທີມງານຄອຍໃຫ້ຄຳປຶກສາ' }
 ]
 
 // Accurate categories matching database
@@ -555,7 +557,7 @@ onMounted(() => {
 <style scoped>
 .brand-avatar {
   border-radius: 12px;
-  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  background: linear-gradient(135deg, #FF2A85 0%, #FF52A2 100%);
+  box-shadow: 0 4px 16px rgba(255, 42, 133, 0.45);
 }
 </style>
