@@ -135,23 +135,32 @@
             <v-col cols="12" md="9">
                 <!-- Top Toolbar & Product Search -->
                 <v-card flat border class="pa-4 mb-6">
-                    <v-row align="center" justify="space-between" no-gutters class="ga-3">
+                    <v-row align="center" justify="space-between" class="ga-2">
                         <v-col cols="12" sm="auto">
                             <div class="d-flex align-center ga-2">
-                                <v-icon color="primary" size="28">mdi-cellphone</v-icon>
+                                <v-icon color="primary" size="28">mdi-shopping</v-icon>
                                 <div>
                                     <h2 class="text-h6 font-weight-bold mb-0">
                                         ສິນຄ້າ: {{ selectedCatName }} / {{ selectedBrandName }}
                                     </h2>
                                     <div class="text-caption text-medium-emphasis">
-                                        ພົບສິນຄ້າທັງໝົດ {{ products.length }} ລາຍການ
+                                        ພົບສິນຄ້າທັງໝົດ {{ displayedProducts.length }} ລາຍການ
                                     </div>
                                 </div>
                             </div>
                         </v-col>
 
-                        <!-- Product Search Input -->
-                        <v-col cols="12" sm="5" md="4">
+                        <!-- Image Filter Toggle & Search Input -->
+                        <v-col cols="12" sm="auto" class="d-flex align-center flex-wrap ga-3">
+                            <v-switch
+                                v-model="onlyWithImages"
+                                color="primary"
+                                hide-details
+                                density="compact"
+                                label="ສະແດງສະເພາະທີ່ມີຮູບ"
+                                class="font-weight-medium text-body-2"
+                            />
+
                             <v-text-field
                                 v-model="productSearch"
                                 placeholder="ຄົ້ນຫາຊື່ສິນຄ້າ..."
@@ -160,6 +169,7 @@
                                 prepend-inner-icon="mdi-magnify"
                                 hide-details
                                 clearable
+                                style="min-width: 220px;"
                                 @update:model-value="onSearchProduct"
                             />
                         </v-col>
@@ -175,7 +185,7 @@
                 </div>
 
                 <!-- No Products Found -->
-                <v-card v-else-if="products.length === 0" flat border class="pa-12 text-center">
+                <v-card v-else-if="displayedProducts.length === 0" flat border class="pa-12 text-center">
                     <v-icon size="64" color="grey-lighten-1">mdi-package-variant-remove</v-icon>
                     <h3 class="text-h6 font-weight-bold mt-4">ບໍ່ພົບສິນຄ້າທີ່ກົງກັບເງື່ອນໄຂ</h3>
                     <p class="text-body-2 text-medium-emphasis mb-4">ກະລຸນາລອງເລືອກໝວດໝູ່ ຫຼື ແບຣນອື່ນ</p>
@@ -188,40 +198,53 @@
                 <div v-else>
                     <v-row>
                         <v-col
-                            v-for="product in products"
+                            v-for="product in displayedProducts"
                             :key="product.productId"
                             cols="12"
                             sm="6"
                             md="4"
                         >
                             <v-card hover flat border class="fill-height d-flex flex-column overflow-hidden">
-                                <v-img
-                                    v-if="product.productImageUrl"
-                                    :src="'https://api.olaa.la/files/' + product.productImageUrl"
-                                    height="220"
-                                    cover
-                                    class="bg-grey-lighten-4 align-start"
-                                >
-                                    <v-chip
-                                        v-if="product.dealsFlag"
-                                        color="warning"
-                                        size="x-small"
-                                        class="ma-3 font-weight-bold"
+                                <!-- Product Image Area with Click-to-Preview -->
+                                <div class="position-relative overflow-hidden cursor-pointer" @click="openImageModal(product)">
+                                    <v-img
+                                        :src="getProductImageUrl(product)"
+                                        height="220"
+                                        cover
+                                        class="bg-grey-lighten-4 align-start"
+                                        @error="onImageError(product.productId)"
                                     >
-                                        {{ product.dealsFlag }}
-                                    </v-chip>
-                                </v-img>
-                                <div v-else class="bg-grey-lighten-4 d-flex align-center justify-center position-relative" style="height: 220px;">
-                                    <v-chip
-                                        v-if="product.dealsFlag"
-                                        color="warning"
-                                        size="x-small"
-                                        class="position-absolute font-weight-bold"
-                                        style="top: 12px; left: 12px;"
-                                    >
-                                        {{ product.dealsFlag }}
-                                    </v-chip>
-                                    <v-icon size="64" color="grey-lighten-1">mdi-cellphone-off</v-icon>
+                                        <!-- Loading Placeholder -->
+                                        <template v-slot:placeholder>
+                                            <div class="d-flex align-center justify-center fill-height">
+                                                <v-progress-circular indeterminate color="primary" size="28" />
+                                            </div>
+                                        </template>
+
+                                        <!-- Error Fallback -->
+                                        <template v-slot:error>
+                                            <div class="d-flex flex-column align-center justify-center fill-height bg-grey-lighten-4">
+                                                <v-img src="/images/placeholder-product.svg" height="220" contain />
+                                            </div>
+                                        </template>
+
+                                        <!-- Deals / New Chip -->
+                                        <v-chip
+                                            v-if="product.dealsFlag"
+                                            color="warning"
+                                            size="x-small"
+                                            class="ma-3 font-weight-bold elevation-1"
+                                        >
+                                            {{ product.dealsFlag }}
+                                        </v-chip>
+
+                                        <!-- Quick Preview Hint Icon -->
+                                        <div class="position-absolute" style="bottom: 8px; right: 8px;">
+                                            <v-avatar size="28" color="surface" class="elevation-1" style="opacity: 0.85;">
+                                                <v-icon size="16" color="primary">mdi-magnify-plus-outline</v-icon>
+                                            </v-avatar>
+                                        </div>
+                                    </v-img>
                                 </div>
 
                                 <v-card-title class="font-weight-bold px-4 pt-3 pb-1 text-truncate" style="font-size: 16px;">
@@ -230,7 +253,9 @@
 
                                 <v-card-text class="px-4 pb-2 flex-grow-1" style="font-size: 12px;">
                                     <div class="d-flex align-center ga-1 text-medium-emphasis" style="font-size: 12px;">
-                                        <v-icon size="14" color="success">mdi-check-circle-outline</v-icon>
+                                        <v-icon size="14" :color="product.hasStock ? 'success' : 'grey'">
+                                            {{ product.hasStock ? 'mdi-check-circle-outline' : 'mdi-alert-circle-outline' }}
+                                        </v-icon>
                                         <span>{{ product.hasStock ? 'ມີສິນຄ້າ' : 'ສິນຄ້າໝົດ' }}</span>
                                     </div>
                                 </v-card-text>
@@ -241,8 +266,14 @@
                                             ₭{{ product.price ? product.price.toLocaleString() : '0' }}
                                         </span>
                                     </div>
-                                    <v-btn color="primary" variant="flat" size="small" class="text-none font-weight-bold">
-                                        ຊື້ດຽວນີ້
+                                    <v-btn
+                                        color="primary"
+                                        variant="flat"
+                                        size="small"
+                                        class="text-none font-weight-bold"
+                                        @click.stop="openImageModal(product)"
+                                    >
+                                        ເບິ່ງຮູບ / ລາຍລະອຽດ
                                     </v-btn>
                                 </v-card-actions>
                             </v-card>
@@ -267,6 +298,47 @@
                 </div>
             </v-col>
         </v-row>
+
+        <!-- Product Image & Detail Preview Modal -->
+        <v-dialog v-model="previewDialog" max-width="560">
+            <v-card v-if="selectedProduct" class="rounded-xl overflow-hidden elevation-10">
+                <v-card-title class="d-flex justify-space-between align-center pa-4 bg-grey-lighten-4">
+                    <div class="text-subtitle-1 font-weight-bold text-truncate" style="max-width: 85%;">
+                        {{ selectedProduct.productTitle }}
+                    </div>
+                    <v-btn icon="mdi-close" variant="text" size="small" @click="previewDialog = false" />
+                </v-card-title>
+
+                <div class="pa-4 bg-white text-center">
+                    <v-img
+                        :src="getProductImageUrl(selectedProduct)"
+                        height="360"
+                        contain
+                        class="rounded-lg bg-grey-lighten-5"
+                    >
+                        <template v-slot:placeholder>
+                            <div class="d-flex align-center justify-center fill-height">
+                                <v-progress-circular indeterminate color="primary" size="36" />
+                            </div>
+                        </template>
+                    </v-img>
+
+                    <div class="mt-4 d-flex justify-space-between align-center">
+                        <div class="text-left">
+                            <div class="text-h6 font-weight-bold text-primary">
+                                ₭{{ selectedProduct.price ? selectedProduct.price.toLocaleString() : '0' }}
+                            </div>
+                            <div class="text-caption text-medium-emphasis">
+                                {{ selectedProduct.hasStock ? '✓ ມີສິນຄ້າໃນສະຕ໊ອກ' : '✗ ສິນຄ້າໝົດຊົ່ວຄາວ' }}
+                            </div>
+                        </div>
+                        <v-btn color="primary" variant="flat" prepend-icon="mdi-cart" class="font-weight-bold text-none">
+                            ຊື້ດຽວນີ້
+                        </v-btn>
+                    </div>
+                </div>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 
@@ -285,12 +357,14 @@ const highlights = [
     { icon: 'mdi-headset', title: 'ບໍລິການ 24/7', subtitle: 'ທີມງານຄອຍໃຫ້ຄຳປຶກສາ', color: 'info' }
 ]
 
+// Accurate categories matching olaa.la database
 const categories = [
     { id: 0, name: 'ໝວດໝູ່ທັງໝົດ (All)', icon: 'mdi-apps' },
-    { id: 1, name: 'ໂທລະສັບມືຖື (Smartphones)', icon: 'mdi-cellphone' },
-    { id: 2, name: 'ອຸປະກອນເສີມ (Accessories)', icon: 'mdi-headphones' },
-    { id: 3, name: 'ກ້ອງ & ວິດີໂອ (Cameras)', icon: 'mdi-camera' },
-    { id: 4, name: 'ອຸປະກອນອັດສະລິຍະ (Smart Devices)', icon: 'mdi-watch' }
+    { id: 10, name: 'ພາຫະນະໄຟຟ້າ & ລົດ (EV & Motors)', icon: 'mdi-motorbike' },
+    { id: 8, name: 'ອຸປະກອນອີເລັກໂທຣນິກ (Electronics)', icon: 'mdi-cellphone' },
+    { id: 3, name: 'ເຄື່ອງໃຊ້ໄຟຟ້າ (Appliances)', icon: 'mdi-washing-machine' },
+    { id: 6, name: 'ຄອມພິວເຕີ (Hardware & Mining)', icon: 'mdi-laptop' },
+    { id: 14, name: 'ເຄື່ອງແຕ່ງກາຍ & ກະເປົ໋າ (Bags)', icon: 'mdi-bag-personal' }
 ]
 
 const brands = ref([])
@@ -308,6 +382,39 @@ const selectedBrandId = ref(0)
 const selectedBrandName = ref('ທັງໝົດ')
 const skipCount = ref(0)
 const pageSize = 24
+
+// Image handling states
+const failedImages = ref(new Set())
+const onlyWithImages = ref(false)
+const previewDialog = ref(false)
+const selectedProduct = ref(null)
+
+const getProductImageUrl = (product) => {
+    if (!product) return '/images/placeholder-product.svg'
+    if (failedImages.value.has(product.productId)) {
+        return '/images/placeholder-product.svg'
+    }
+    if (!product.productImageUrl || !product.productImageUrl.trim()) {
+        return '/images/placeholder-product.svg'
+    }
+    return `https://api.olaa.la/files/${encodeURI(product.productImageUrl.trim())}`
+}
+
+const onImageError = (productId) => {
+    failedImages.value.add(productId)
+}
+
+const openImageModal = (product) => {
+    selectedProduct.value = product
+    previewDialog.value = true
+}
+
+const displayedProducts = computed(() => {
+    if (onlyWithImages.value) {
+        return products.value.filter(p => p.productImageUrl && p.productImageUrl.trim() !== '' && !failedImages.value.has(p.productId))
+    }
+    return products.value
+})
 
 const filteredBrands = computed(() => {
     if (!brandSearch.value) return brands.value
@@ -396,6 +503,7 @@ const resetFilters = () => {
     selectedBrandName.value = 'ທັງໝົດ'
     productSearch.value = ''
     brandSearch.value = ''
+    onlyWithImages.value = false
     loadProducts()
 }
 
