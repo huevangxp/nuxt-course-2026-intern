@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <!-- Modern Sticky Navigation Bar -->
-    <v-app-bar flat class="px-md-8 px-2 glass-header" height="72">
+    <!-- Modern Black & Pink Sticky Navigation Bar -->
+    <v-app-bar flat class="px-md-8 px-2 glass-header" height="74">
       <!-- Brand Logo -->
       <v-btn variant="text" to="/" class="px-2 text-none d-flex align-center rounded-xl">
         <div class="brand-avatar mr-3 d-flex align-center justify-center">
           <v-icon size="22" color="white">mdi-lightning-bolt</v-icon>
         </div>
-        <span class="font-weight-black text-h5 tracking-tight text-grey-darken-4">
+        <span class="font-weight-black text-h5 tracking-tight text-white">
           Hue<span class="text-gradient">Dev</span>
         </span>
       </v-btn>
@@ -21,7 +21,7 @@
           :key="item.title" 
           :to="item.to" 
           variant="text" 
-          class="text-none font-weight-semibold px-4 rounded-pill"
+          class="text-none font-weight-semibold px-4 rounded-pill text-grey-lighten-2 nav-link-btn"
           active-color="primary"
           :prepend-icon="item.icon"
         >
@@ -36,7 +36,7 @@
         <v-btn
           to="/login"
           variant="flat"
-          class="text-none px-6 font-weight-bold rounded-pill btn-gradient elevation-2"
+          class="text-none px-6 font-weight-bold rounded-pill btn-gradient"
           prepend-icon="mdi-account-circle-outline"
         >
           ເຂົ້າສູ່ລະບົບ
@@ -44,23 +44,23 @@
       </div>
 
       <!-- Mobile Menu Toggle -->
-      <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer" />
+      <v-app-bar-nav-icon color="primary" class="d-md-none" @click="drawer = !drawer" />
     </v-app-bar>
 
     <!-- Mobile Navigation Drawer -->
-    <v-navigation-drawer v-model="drawer" temporary location="end" width="300" class="rounded-s-xl">
+    <v-navigation-drawer v-model="drawer" temporary location="end" width="300" class="rounded-s-xl bg-surface">
       <v-list-item class="py-5 px-6">
         <template v-slot:prepend>
           <div class="brand-avatar mr-3 d-flex align-center justify-center" style="width: 38px; height: 38px;">
             <v-icon size="20" color="white">mdi-lightning-bolt</v-icon>
           </div>
         </template>
-        <v-list-item-title class="font-weight-black text-h6">
+        <v-list-item-title class="font-weight-black text-h6 text-white">
           Hue<span class="text-gradient">Dev</span>
         </v-list-item-title>
       </v-list-item>
       
-      <v-divider />
+      <v-divider class="border-opacity-25" color="pink" />
 
       <v-list nav class="pa-4">
         <v-list-item
@@ -69,19 +69,19 @@
           :to="item.to"
           :title="item.title"
           :prepend-icon="item.icon"
-          class="mb-2 rounded-lg font-weight-medium"
+          class="mb-2 rounded-xl font-weight-semibold text-grey-lighten-2"
           active-color="primary"
           @click="drawer = false"
         />
         
-        <v-divider class="my-4" />
+        <v-divider class="my-4 border-opacity-25" color="pink" />
 
         <v-btn
           to="/login"
           block
           size="large"
           prepend-icon="mdi-account-circle-outline"
-          class="text-none font-weight-bold rounded-pill btn-gradient elevation-2"
+          class="text-none font-weight-bold rounded-pill btn-gradient"
           @click="drawer = false"
         >
           ເຂົ້າສູ່ລະບົບ
@@ -91,15 +91,15 @@
 
     <!-- Main Content Area -->
     <v-main class="bg-background">
-      <v-container class="py-6 px-4" fluid style="max-width: 1340px;">
+      <v-container class="py-8 px-4" fluid style="max-width: 1340px;">
         <slot />
       </v-container>
     </v-main>
 
-    <!-- Modern Dark Slate Footer -->
-    <v-footer class="text-grey-lighten-1 flex-column pa-0 position-relative overflow-hidden" style="background-color: #0B0F19;">
-      <!-- Glowing Top Accent Line -->
-      <div class="w-100" style="height: 3px; background: linear-gradient(90deg, #4F46E5 0%, #06B6D4 50%, #4F46E5 100%);"></div>
+    <!-- BlackPink Luxury Footer -->
+    <v-footer class="text-grey-lighten-1 flex-column pa-0 position-relative overflow-hidden" style="background-color: #060608;">
+      <!-- Glowing Pink Top Line -->
+      <div class="w-100" style="height: 3px; background: linear-gradient(90deg, #FF2A85 0%, #FF52A2 50%, #D946EF 100%); box-shadow: 0 0 16px rgba(255, 42, 133, 0.6);"></div>
 
       <v-container class="pt-14 pb-8 px-6 px-md-12" fluid max-width="1300">
         <v-row>
@@ -114,7 +114,7 @@
               </span>
             </div>
             <p class="text-body-2 text-grey-lighten-1 mb-6" style="line-height: 1.8;">
-              HueDev - ສູນລວມເທັກໂນໂລຢີ, ໂທລະສັບ, ຄອມພິວເຕີ ແລະ ອຸປະກອນໄອທີທີ່ທັນສະໄໝທີ່ສຸດ ຂອງແທ້ 100% ພ້ອມການບໍລິການ ແລະ ຮັບປະກັນຄຸນນະພາບລະດັບພຣີມຽມ.
+              HueDev - ສູນລວມເທັກໂນໂລຢີ, ໂທລະສັບ, ຄອມພິວເຕີ ແລະ ອຸປະກອນໄອທີທີ່ທັນສະໄໝທີ່ສຸດ ໃນສະໄຕລ໌ Black & Pink ພຣີມຽມ ຂອງແທ້ 100% ພ້ອມຮັບປະກັນຄຸນນະພາບ.
             </p>
             <div class="d-flex ga-2">
               <v-btn
@@ -122,7 +122,7 @@
                 :key="social.name"
                 :icon="social.icon"
                 variant="tonal"
-                color="white"
+                color="primary"
                 size="small"
                 density="comfortable"
                 class="rounded-lg"
@@ -141,8 +141,8 @@
                 :to="item.to"
                 variant="plain"
                 density="compact"
-                color="grey-lighten-1"
-                class="justify-start px-0 text-capitalize text-body-2"
+                color="grey-lighten-2"
+                class="justify-start px-0 text-capitalize text-body-2 footer-link"
               >
                 {{ item.title }}
               </v-btn>
@@ -158,8 +158,8 @@
                 :key="category"
                 variant="plain"
                 density="compact"
-                color="grey-lighten-1"
-                class="justify-start px-0 text-capitalize text-body-2"
+                color="grey-lighten-2"
+                class="justify-start px-0 text-capitalize text-body-2 footer-link"
               >
                 {{ category }}
               </v-btn>
@@ -170,15 +170,15 @@
           <v-col cols="12" sm="4" md="3">
             <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">ຮັບຂໍ້ມູນຂ່າວສານ</h4>
             <p class="text-caption text-grey-lighten-1 mb-4" style="line-height: 1.6;">
-              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນ ແລະ ສິນຄ້າເທັກໂນໂລຢີໃໝ່ໆກ່ອນໃຜ.
+              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນພິເສດ ແລະ ສິນຄ້າ Black & Pink ໃໝ່ກ່ອນໃຜ.
             </p>
             <v-text-field
               density="compact"
               variant="outlined"
               placeholder="ປ້ອນອີເມວຂອງທ່ານ..."
               hide-details
-              bg-color="grey-darken-4"
-              class="rounded-lg"
+              bg-color="surface"
+              class="rounded-xl"
             >
               <template v-slot:append-inner>
                 <v-btn color="primary" variant="flat" size="small" icon="mdi-send" class="btn-gradient" />
@@ -187,14 +187,14 @@
           </v-col>
         </v-row>
 
-        <v-divider class="my-8 border-opacity-15" color="grey-lighten-1" />
+        <v-divider class="my-8 border-opacity-15" color="pink" />
 
         <!-- Sub-footer copyright -->
         <div class="d-flex flex-column flex-sm-row justify-space-between align-center text-caption text-grey-lighten-2 ga-2">
-          <span>&copy; {{ currentYear }} <strong>HueDev Store</strong>. All rights reserved.</span>
+          <span>&copy; {{ currentYear }} <strong class="text-gradient">HueDev Store</strong>. All rights reserved.</span>
           <div class="d-flex ga-4 mt-2 mt-sm-0">
-            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</v-btn>
-            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">ເງື່ອນໄຂການໃຊ້ງານ</v-btn>
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption footer-link">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</v-btn>
+            <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption footer-link">ເງື່ອນໄຂການໃຊ້ງານ</v-btn>
           </div>
         </div>
       </v-container>
@@ -238,7 +238,15 @@ const currentYear = computed(() => new Date().getFullYear())
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  background: linear-gradient(135deg, #FF2A85 0%, #FF52A2 100%);
+  box-shadow: 0 4px 16px rgba(255, 42, 133, 0.45);
+}
+
+.nav-link-btn:hover {
+  color: #FF2A85 !important;
+}
+
+.footer-link:hover {
+  color: #FF2A85 !important;
 }
 </style>
