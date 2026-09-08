@@ -6,11 +6,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'HueDev - Modern Tech & Gadgets Store',
+      title: 'HueDev - Black & Pink Modern Tech Store',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'HueDev - The premier modern tech, smartphones, computers, and electronics store.' }
+        { name: 'description', content: 'HueDev - The premier modern tech, smartphones, and gadgets store in Black & Pink luxury style.' }
       ],
       link: [
         {
@@ -33,19 +33,23 @@ export default defineNuxtConfig({
   vuetify: {
     vuetifyOptions: {
       theme: {
-        defaultTheme: 'light',
+        defaultTheme: 'dark',
         themes: {
-          light: {
+          dark: {
+            dark: true,
             colors: {
-              primary: '#4F46E5', // Modern Electric Indigo
-              secondary: '#0EA5E9', // Sky Cyan
-              accent: '#8B5CF6', // Vivid Violet
-              info: '#06B6D4',
+              primary: '#FF2A85', // Neon Hot Pink
+              'primary-darken-1': '#DB2777',
+              secondary: '#F472B6', // Soft Rose Pink
+              accent: '#E879F9', // Vivid Fuchsia
+              info: '#FB7185',
               success: '#10B981', // Emerald
               warning: '#F59E0B', // Amber
-              error: '#EF4444', // Red
-              surface: '#FFFFFF',
-              background: '#F8FAFC',
+              error: '#FF4D6D', // Crimson Pink
+              surface: '#121217', // Deep Luxury Obsidian Black
+              'surface-bright': '#1A1A24',
+              'surface-light': '#242433',
+              background: '#09090D', // Pure Jet Black
             }
           }
         }
