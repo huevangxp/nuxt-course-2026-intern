@@ -1,15 +1,15 @@
 <template>
   <div class="d-flex align-center justify-center bg-background pa-4" style="min-height: 100vh;">
-    <v-card flat border class="pa-6 pa-md-8 w-100 rounded-2xl bg-surface elevation-16" max-width="440" style="border-color: rgba(255, 42, 133, 0.3) !important;">
+    <v-card flat border class="pa-6 pa-md-8 w-100 rounded-2xl bg-surface elevation-4" max-width="440" style="border-color: rgba(255, 42, 133, 0.25) !important;">
       <!-- Store Header & Logo -->
       <div class="text-center mb-6">
         <div class="brand-avatar mx-auto mb-3 d-flex align-center justify-center" style="width: 56px; height: 56px;">
           <v-icon size="30" color="white">mdi-lightning-bolt</v-icon>
         </div>
-        <h1 class="text-h4 font-weight-black text-white mb-1">
+        <h1 class="text-h4 font-weight-black text-grey-darken-4 mb-1">
           Hue<span class="text-gradient">Dev</span>
         </h1>
-        <p class="text-body-2 text-grey-lighten-1">ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບ (Black &amp; Pink Edition)</p>
+        <p class="text-body-2 text-medium-emphasis">ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ລະບົບ HueDev Store</p>
       </div>
 
       <!-- Login Form -->
@@ -108,6 +108,6 @@ const handleLogin = () => {
 .brand-avatar {
   border-radius: 14px;
   background: linear-gradient(135deg, #FF2A85 0%, #FF52A2 100%);
-  box-shadow: 0 4px 18px rgba(255, 42, 133, 0.45);
+  box-shadow: 0 4px 18px rgba(255, 42, 133, 0.4);
 }
 </style>
