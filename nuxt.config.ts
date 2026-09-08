@@ -6,6 +6,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      title: 'HueDev - Modern Tech & Gadgets Store',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'HueDev - The premier modern tech, smartphones, computers, and electronics store.' }
+      ],
       link: [
         {
           rel: 'preconnect',
@@ -18,7 +24,7 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap'
+          href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Lao:wght@300;400;500;600;700;800&display=swap'
         }
       ]
     }
@@ -31,8 +37,15 @@ export default defineNuxtConfig({
         themes: {
           light: {
             colors: {
-              primary: '#00695C', // Teal Darken-2
-              secondary: '#004D40', // Teal Darken-4
+              primary: '#4F46E5', // Modern Electric Indigo
+              secondary: '#0EA5E9', // Sky Cyan
+              accent: '#8B5CF6', // Vivid Violet
+              info: '#06B6D4',
+              success: '#10B981', // Emerald
+              warning: '#F59E0B', // Amber
+              error: '#EF4444', // Red
+              surface: '#FFFFFF',
+              background: '#F8FAFC',
             }
           }
         }
@@ -40,6 +53,6 @@ export default defineNuxtConfig({
     }
   },
   devServer: {
-   port: 5000
- }
+    port: 5000
+  }
 })
