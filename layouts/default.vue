@@ -1,25 +1,27 @@
 <template>
   <v-app>
-    <!-- Navigation Bar -->
-    <v-app-bar flat border class="px-md-8 px-2" color="surface" height="68">
+    <!-- Modern Sticky Navigation Bar -->
+    <v-app-bar flat class="px-md-8 px-2 glass-header" height="72">
       <!-- Brand Logo -->
-      <v-btn variant="text" to="/" class="px-2 text-none font-weight-bold text-h6 text-primary d-flex align-center">
-        <v-avatar color="primary" variant="tonal" size="40" class="mr-3">
-          <v-icon size="24" color="primary">mdi-cellphone-link</v-icon>
-        </v-avatar>
-        <span class="font-weight-bold text-h5 text-grey-darken-4">olaa<span class="text-primary">.la</span></span>
+      <v-btn variant="text" to="/" class="px-2 text-none d-flex align-center rounded-xl">
+        <div class="brand-avatar mr-3 d-flex align-center justify-center">
+          <v-icon size="22" color="white">mdi-lightning-bolt</v-icon>
+        </div>
+        <span class="font-weight-black text-h5 tracking-tight text-grey-darken-4">
+          Hue<span class="text-gradient">Dev</span>
+        </span>
       </v-btn>
 
       <v-spacer />
 
       <!-- Desktop Navigation Links -->
-      <div class="d-none d-md-flex align-center ga-2">
+      <div class="d-none d-md-flex align-center ga-1">
         <v-btn 
           v-for="item in navItems" 
           :key="item.title" 
           :to="item.to" 
           variant="text" 
-          class="text-none font-weight-medium px-4"
+          class="text-none font-weight-semibold px-4 rounded-pill"
           active-color="primary"
           :prepend-icon="item.icon"
         >
@@ -33,9 +35,8 @@
       <div class="d-none d-md-flex align-center ga-3">
         <v-btn
           to="/login"
-          color="primary"
           variant="flat"
-          class="text-none px-6 font-weight-bold"
+          class="text-none px-6 font-weight-bold rounded-pill btn-gradient elevation-2"
           prepend-icon="mdi-account-circle-outline"
         >
           ເຂົ້າສູ່ລະບົບ
@@ -47,14 +48,16 @@
     </v-app-bar>
 
     <!-- Mobile Navigation Drawer -->
-    <v-navigation-drawer v-model="drawer" temporary location="end" width="280">
-      <v-list-item class="py-4">
+    <v-navigation-drawer v-model="drawer" temporary location="end" width="300" class="rounded-s-xl">
+      <v-list-item class="py-5 px-6">
         <template v-slot:prepend>
-          <v-avatar color="primary" variant="tonal" size="36">
-            <v-icon size="20" color="primary">mdi-cellphone-link</v-icon>
-          </v-avatar>
+          <div class="brand-avatar mr-3 d-flex align-center justify-center" style="width: 38px; height: 38px;">
+            <v-icon size="20" color="white">mdi-lightning-bolt</v-icon>
+          </div>
         </template>
-        <v-list-item-title class="font-weight-bold text-h6">olaa.la</v-list-item-title>
+        <v-list-item-title class="font-weight-black text-h6">
+          Hue<span class="text-gradient">Dev</span>
+        </v-list-item-title>
       </v-list-item>
       
       <v-divider />
@@ -66,7 +69,7 @@
           :to="item.to"
           :title="item.title"
           :prepend-icon="item.icon"
-          class="mb-2"
+          class="mb-2 rounded-lg font-weight-medium"
           active-color="primary"
           @click="drawer = false"
         />
@@ -75,11 +78,10 @@
 
         <v-btn
           to="/login"
-          color="primary"
           block
           size="large"
           prepend-icon="mdi-account-circle-outline"
-          class="text-none font-weight-bold"
+          class="text-none font-weight-bold rounded-pill btn-gradient elevation-2"
           @click="drawer = false"
         >
           ເຂົ້າສູ່ລະບົບ
@@ -87,37 +89,43 @@
       </v-list>
     </v-navigation-drawer>
 
-    <!-- Main Content -->
-    <v-main class="bg-grey-lighten-5">
-      <v-container class="py-6 px-4" fluid style="max-width: 1320px;">
+    <!-- Main Content Area -->
+    <v-main class="bg-background">
+      <v-container class="py-6 px-4" fluid style="max-width: 1340px;">
         <slot />
       </v-container>
     </v-main>
 
-    <!-- Footer -->
-    <v-footer class="bg-teal-darken-4 text-grey-lighten-1 flex-column pa-0">
-      <v-container class="py-12 px-6 px-md-12" fluid max-width="1280">
+    <!-- Modern Dark Slate Footer -->
+    <v-footer class="text-grey-lighten-1 flex-column pa-0 position-relative overflow-hidden" style="background-color: #0B0F19;">
+      <!-- Glowing Top Accent Line -->
+      <div class="w-100" style="height: 3px; background: linear-gradient(90deg, #4F46E5 0%, #06B6D4 50%, #4F46E5 100%);"></div>
+
+      <v-container class="pt-14 pb-8 px-6 px-md-12" fluid max-width="1300">
         <v-row>
           <!-- Column 1: Brand & Bio -->
           <v-col cols="12" md="4" class="pr-md-8 mb-6 mb-md-0">
             <div class="d-flex align-center mb-4">
-              <v-avatar color="primary" size="40" class="mr-3">
-                <v-icon size="24" color="white">mdi-cellphone-link</v-icon>
-              </v-avatar>
-              <span class="text-h5 font-weight-bold text-white">olaa<span class="text-primary">.la</span></span>
+              <div class="brand-avatar mr-3 d-flex align-center justify-center">
+                <v-icon size="22" color="white">mdi-lightning-bolt</v-icon>
+              </div>
+              <span class="text-h5 font-weight-black text-white tracking-tight">
+                Hue<span class="text-gradient">Dev</span>
+              </span>
             </div>
-            <p class="text-body-2 text-grey-lighten-1 mb-6">
-              olaa.la - ສູນຈຳໜ່າຍໂທລະສັບມືຖື, ແທັບເລັດ ແລະ ອຸປະກອນໄອທີຄຸນນະພາບສູງ ຂອງແທ້ 100% ພ້ອມໃບຮັບປະກັນສູນຢ່າງເປັນທາງການ.
+            <p class="text-body-2 text-grey-lighten-1 mb-6" style="line-height: 1.8;">
+              HueDev - ສູນລວມເທັກໂນໂລຢີ, ໂທລະສັບ, ຄອມພິວເຕີ ແລະ ອຸປະກອນໄອທີທີ່ທັນສະໄໝທີ່ສຸດ ຂອງແທ້ 100% ພ້ອມການບໍລິການ ແລະ ຮັບປະກັນຄຸນນະພາບລະດັບພຣີມຽມ.
             </p>
             <div class="d-flex ga-2">
               <v-btn
                 v-for="social in socialLinks"
-                :key="social.icon"
+                :key="social.name"
                 :icon="social.icon"
                 variant="tonal"
                 color="white"
                 size="small"
                 density="comfortable"
+                class="rounded-lg"
                 :aria-label="social.name"
               />
             </div>
@@ -161,29 +169,29 @@
           <!-- Column 4: Contact & Newsletter -->
           <v-col cols="12" sm="4" md="3">
             <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">ຮັບຂໍ້ມູນຂ່າວສານ</h4>
-            <p class="text-caption text-grey-lighten-1 mb-4">
-              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນ ແລະ ສິນຄ້າໃໝ່ກ່ອນໃຜ.
+            <p class="text-caption text-grey-lighten-1 mb-4" style="line-height: 1.6;">
+              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນ ແລະ ສິນຄ້າເທັກໂນໂລຢີໃໝ່ໆກ່ອນໃຜ.
             </p>
             <v-text-field
               density="compact"
-              variant="solo-filled"
-              placeholder="ປ້ອນອີເມວຂອງທ່ານ"
+              variant="outlined"
+              placeholder="ປ້ອນອີເມວຂອງທ່ານ..."
               hide-details
-              bg-color="teal-darken-3"
-              class="mb-2"
+              bg-color="grey-darken-4"
+              class="rounded-lg"
             >
               <template v-slot:append-inner>
-                <v-btn color="primary" variant="flat" size="small" icon="mdi-send" />
+                <v-btn color="primary" variant="flat" size="small" icon="mdi-send" class="btn-gradient" />
               </template>
             </v-text-field>
           </v-col>
         </v-row>
 
-        <v-divider class="my-8 border-opacity-25" color="grey-lighten-1" />
+        <v-divider class="my-8 border-opacity-15" color="grey-lighten-1" />
 
         <!-- Sub-footer copyright -->
         <div class="d-flex flex-column flex-sm-row justify-space-between align-center text-caption text-grey-lighten-2 ga-2">
-          <span>&copy; {{ currentYear }} olaa.la Online Store. All rights reserved.</span>
+          <span>&copy; {{ currentYear }} <strong>HueDev Store</strong>. All rights reserved.</span>
           <div class="d-flex ga-4 mt-2 mt-sm-0">
             <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</v-btn>
             <v-btn variant="plain" density="compact" color="grey-lighten-2" class="px-0 text-none text-caption">ເງື່ອນໄຂການໃຊ້ງານ</v-btn>
@@ -207,11 +215,11 @@ const navItems = [
 ]
 
 const categories = [
-  'ໂທລະສັບມືຖື (Smartphones)',
-  'ແທັບເລັດ (Tablets)',
-  'ອຸປະກອນເສີມ (Accessories)',
-  'ກ້ອງ & ວິດີໂອ (Cameras)',
-  'ອຸປະກອນອັດສະລິຍະ (Smart Devices)'
+  'ພາຫະນະໄຟຟ້າ (EV & Motors)',
+  'ອຸປະກອນອີເລັກໂທຣນິກ (Electronics)',
+  'ເຄື່ອງໃຊ້ໄຟຟ້າ (Appliances)',
+  'ຄອມພິວເຕີ (Computer Hardware)',
+  'ເຄື່ອງແຕ່ງກາຍ & ກະເປົ໋າ (Bags)'
 ]
 
 const socialLinks = [
@@ -224,3 +232,13 @@ const socialLinks = [
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>
+
+<style scoped>
+.brand-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+</style>
