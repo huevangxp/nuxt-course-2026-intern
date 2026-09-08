@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <!-- Modern Black & Pink Sticky Navigation Bar -->
+    <!-- Modern White Glassmorphic Navigation Bar -->
     <v-app-bar flat class="px-md-8 px-2 glass-header" height="74">
       <!-- Brand Logo -->
       <v-btn variant="text" to="/" class="px-2 text-none d-flex align-center rounded-xl">
         <div class="brand-avatar mr-3 d-flex align-center justify-center">
           <v-icon size="22" color="white">mdi-lightning-bolt</v-icon>
         </div>
-        <span class="font-weight-black text-h5 tracking-tight text-white">
+        <span class="font-weight-black text-h5 tracking-tight text-grey-darken-4">
           Hue<span class="text-gradient">Dev</span>
         </span>
       </v-btn>
@@ -21,7 +21,7 @@
           :key="item.title" 
           :to="item.to" 
           variant="text" 
-          class="text-none font-weight-semibold px-4 rounded-pill text-grey-lighten-2 nav-link-btn"
+          class="text-none font-weight-semibold px-4 rounded-pill text-grey-darken-3 nav-link-btn"
           active-color="primary"
           :prepend-icon="item.icon"
         >
@@ -55,7 +55,7 @@
             <v-icon size="20" color="white">mdi-lightning-bolt</v-icon>
           </div>
         </template>
-        <v-list-item-title class="font-weight-black text-h6 text-white">
+        <v-list-item-title class="font-weight-black text-h6 text-grey-darken-4">
           Hue<span class="text-gradient">Dev</span>
         </v-list-item-title>
       </v-list-item>
@@ -69,7 +69,7 @@
           :to="item.to"
           :title="item.title"
           :prepend-icon="item.icon"
-          class="mb-2 rounded-xl font-weight-semibold text-grey-lighten-2"
+          class="mb-2 rounded-xl font-weight-semibold text-grey-darken-3"
           active-color="primary"
           @click="drawer = false"
         />
@@ -89,16 +89,16 @@
       </v-list>
     </v-navigation-drawer>
 
-    <!-- Main Content Area -->
+    <!-- Main Content Area with White Background -->
     <v-main class="bg-background">
       <v-container class="py-8 px-4" fluid style="max-width: 1340px;">
         <slot />
       </v-container>
     </v-main>
 
-    <!-- BlackPink Luxury Footer -->
-    <v-footer class="text-grey-lighten-1 flex-column pa-0 position-relative overflow-hidden" style="background-color: #060608;">
-      <!-- Glowing Pink Top Line -->
+    <!-- Luxury Dark Contrast Footer -->
+    <v-footer class="text-grey-lighten-1 flex-column pa-0 position-relative overflow-hidden" style="background-color: #0A0A0E;">
+      <!-- Glowing Pink Top Accent Line -->
       <div class="w-100" style="height: 3px; background: linear-gradient(90deg, #FF2A85 0%, #FF52A2 50%, #D946EF 100%); box-shadow: 0 0 16px rgba(255, 42, 133, 0.6);"></div>
 
       <v-container class="pt-14 pb-8 px-6 px-md-12" fluid max-width="1300">
@@ -114,7 +114,7 @@
               </span>
             </div>
             <p class="text-body-2 text-grey-lighten-1 mb-6" style="line-height: 1.8;">
-              HueDev - ສູນລວມເທັກໂນໂລຢີ, ໂທລະສັບ, ຄອມພິວເຕີ ແລະ ອຸປະກອນໄອທີທີ່ທັນສະໄໝທີ່ສຸດ ໃນສະໄຕລ໌ Black & Pink ພຣີມຽມ ຂອງແທ້ 100% ພ້ອມຮັບປະກັນຄຸນນະພາບ.
+              HueDev - ສູນລວມເທັກໂນໂລຢີ, ໂທລະສັບ, ຄອມພິວເຕີ ແລະ ອຸປະກອນໄອທີທີ່ທັນສະໄໝທີ່ສຸດ ຂອງແທ້ 100% ພ້ອມການບໍລິການ ແລະ ຮັບປະກັນຄຸນນະພາບລະດັບພຣີມຽມ.
             </p>
             <div class="d-flex ga-2">
               <v-btn
@@ -170,14 +170,14 @@
           <v-col cols="12" sm="4" md="3">
             <h4 class="text-subtitle-1 font-weight-bold text-white mb-4">ຮັບຂໍ້ມູນຂ່າວສານ</h4>
             <p class="text-caption text-grey-lighten-1 mb-4" style="line-height: 1.6;">
-              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນພິເສດ ແລະ ສິນຄ້າ Black & Pink ໃໝ່ກ່ອນໃຜ.
+              ລົງທະບຽນເພື່ອຮັບຂໍ້ມູນໂປຣໂມຊັນ ແລະ ສິນຄ້າເທັກໂນໂລຢີໃໝ່ໆກ່ອນໃຜ.
             </p>
             <v-text-field
               density="compact"
               variant="outlined"
               placeholder="ປ້ອນອີເມວຂອງທ່ານ..."
               hide-details
-              bg-color="surface"
+              bg-color="grey-darken-4"
               class="rounded-xl"
             >
               <template v-slot:append-inner>
@@ -239,7 +239,7 @@ const currentYear = computed(() => new Date().getFullYear())
   height: 40px;
   border-radius: 12px;
   background: linear-gradient(135deg, #FF2A85 0%, #FF52A2 100%);
-  box-shadow: 0 4px 16px rgba(255, 42, 133, 0.45);
+  box-shadow: 0 4px 16px rgba(255, 42, 133, 0.4);
 }
 
 .nav-link-btn:hover {
