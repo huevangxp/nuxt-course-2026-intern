@@ -2,14 +2,14 @@
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F8FAFC" />
-      <stop offset="100%" stop-color="#EDF2F7" />
+      <stop offset="100%" stop-color="#EEF2FF" />
     </linearGradient>
-    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00695C" />
-      <stop offset="100%" stop-color="#004D40" />
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#06B6D4" />
     </linearGradient>
     <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.06" />
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#4F46E5" flood-opacity="0.08" />
     </filter>
   </defs>
 
@@ -17,22 +17,23 @@
   <rect width="500" height="500" fill="url(#bgGrad)" />
 
   <!-- Center Card Area -->
-  <g transform="translate(100, 100)" filter="url(#softShadow)">
-    <rect width="300" height="240" rx="20" fill="#FFFFFF" />
+  <g transform="translate(90, 95)" filter="url(#softShadow)">
+    <rect width="320" height="250" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
     
-    <!-- Camera / Product Box Outline -->
-    <g transform="translate(110, 60)">
-      <!-- Soft circle back -->
-      <circle cx="40" cy="40" r="46" fill="#E0F2F1" />
-      <!-- Product Icon (Package / Shopping Bag / Device) -->
-      <path d="M40 16 C26.745 16 16 26.745 16 40 C16 53.255 26.745 64 40 64 C53.255 64 64 53.255 64 40 C64 26.745 53.255 16 40 16 Z M33 28 L47 28 C48.65 28 50 29.35 50 31 L50 49 C50 50.65 48.65 52 47 52 L33 52 C31.35 52 30 50.65 30 49 L30 31 C30 29.35 31.35 28 33 28 Z M40 34 C36.686 34 34 36.686 34 40 C34 43.314 36.686 46 40 46 C43.314 46 46 43.314 46 40 C46 36.686 43.314 34 40 34 Z" fill="url(#iconGrad)" />
+    <!-- Icon Circle -->
+    <g transform="translate(120, 50)">
+      <circle cx="40" cy="40" r="48" fill="#EEF2FF" />
+      <!-- Modern Tech / Device Icon -->
+      <path d="M40 18 C27.85 18 18 27.85 18 40 C18 52.15 27.85 62 40 62 C52.15 62 62 52.15 62 40 C62 27.85 52.15 18 40 18 Z M32 29 L48 29 C49.65 29 51 30.35 51 32 L51 48 C51 49.65 49.65 51 48 51 L32 51 C30.35 51 29 49.65 29 48 L29 32 C29 30.35 30.35 29 32 29 Z M40 35 C37.24 35 35 37.24 35 40 C35 42.76 37.24 45 40 45 C42.76 45 45 42.76 45 40 C45 37.24 42.76 35 40 35 Z" fill="url(#brandGrad)" />
     </g>
 
-    <!-- Subtitle Text -->
-    <text x="150" y="175" text-anchor="middle" font-family="'Noto Sans Lao', system-ui, sans-serif" font-size="15" font-weight="600" fill="#00695C">
-      olaa.la
+    <!-- Brand Name Text -->
+    <text x="160" y="175" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#4F46E5" letter-spacing="-0.5">
+      HueDev
     </text>
-    <text x="150" y="200" text-anchor="middle" font-family="'Noto Sans Lao', system-ui, sans-serif" font-size="13" font-weight="400" fill="#94A3B8">
+    
+    <!-- Lao Subtitle Text -->
+    <text x="160" y="202" text-anchor="middle" font-family="'Noto Sans Lao', system-ui, sans-serif" font-size="13" font-weight="500" fill="#94A3B8">
       ຮູບພາບສິນຄ້າກຳລັງອັບເດດ
     </text>
   </g>
